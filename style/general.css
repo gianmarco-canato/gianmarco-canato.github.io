@@ -30,12 +30,12 @@ li a:hover {
 
 .subtitle {
     font-family: "Zilla Slab", serif;
-    font-size: 2em;
+    font-size: 1.5em;
 }
 
 .main-container {
-    max-width: 90%;
-    margin-left: 5%;
+    max-width: 96%;
+    margin-left: 2%;
 }
 
 
