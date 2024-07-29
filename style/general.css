@@ -23,7 +23,7 @@ li a {
 }
   
   /* Change the link color on hover */
-li a:hover {
+a:hover {
     background-color: white;
     color: black;
   }
