@@ -1,0 +1,68 @@
+body {
+    font-family: "Work Sans", sans-serif;
+    background-color: black;
+    color: white;
+}
+
+p {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li a {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    font-size: 2em;
+}
+  
+  /* Change the link color on hover */
+li a:hover {
+    background-color: white;
+    color: black;
+  }
+
+.subtitle {
+    font-family: "Zilla Slab", serif;
+    font-size: 2em;
+}
+
+.main-container {
+    max-width: 90%;
+    margin-left: 5%;
+}
+
+
+.header {
+    width: 100%; 
+    margin-top: 100px;
+}
+
+.cnt-container {
+    display: flex;
+}
+
+.col1 {
+    flex: 1;
+
+}
+
+.col2 {
+    flex: 2;
+    margin-left: 5%;    
+}
+
+.row {
+    margin-top: 10px;
+}
+
+a {
+    font-family: "Zilla Slab", serif;
+    font-weight: bold;
+    color: white;
+}
