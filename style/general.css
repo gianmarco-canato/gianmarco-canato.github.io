@@ -1,5 +1,5 @@
 body {
-    font-family: "Work Sans", sans-serif;
+    font-family: "Zilla Slab", serif;
     background-color: black;
     color: white;
 }
@@ -7,7 +7,7 @@ body {
 p {
     margin-top: 20px;
     margin-bottom: 20px;
-    font-size: 1em;
+    font-size: 1.1em;
 }
 
 ul {
@@ -17,7 +17,8 @@ ul {
 }
 
 li {
-    margin-top: 5px;
+    margin-top: 20px;
+    font-size: 1.5em;
 }
 
 .subtitle {
@@ -53,7 +54,7 @@ li {
 
 .col2 {
     flex: 6;
-    padding-left: 2%; 
+    padding-left: 5%; 
     margin-left: 5%;
     column-width: 20em;
     
