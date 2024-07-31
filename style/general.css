@@ -32,10 +32,13 @@ a:hover {
     font-weight: bold;
 }
 
-p, h1, h2 {
+h1, h2 {
     margin: 10px 0;
 }
 
+p {
+    margin: 20px 0;
+}
 
 h1 {
     font-size: 48px;
@@ -46,36 +49,27 @@ h2 {
     font-weight: 100;
 }
 
-.contnav {
-    width: 100%;
-    overflow: hidden;
-}
-
-.container {
+.sub-navbar {
+    border-color: white;
+    border-width: 0 0 1px 0;
+    border-style: solid;
     display: flex;
     flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 15% auto;
-    justify-content: space-between;
+}
+
+.sub-navbar ul {
+    font-size: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 1200px;
+    margin: 10px auto;
+    padding: 0 5px;
     align-items: baseline;
+    justify-content: space-between;
 }
 
-.container .title, .container .subtitle, .container .navmenu {
-    margin: 0 10px;
-}
-
-.container .title, .container .subtitle {
-    flex: 2;
-}
-
-.container .navmenu {
-    font-size: 24px;
-    flex: 1;
-}
-
-
-@media(max-width: 733px) {
-    .container {
-        max-width: 400px;
+@media(max-width: 500px) {
+    .sub-navbar ul {
+        flex-direction: column;
     }
 }
