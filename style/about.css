@@ -9,6 +9,7 @@
     max-width: 1200px;
     margin: 3% auto;
     align-items: baseline;
+    justify-content: left;
 }
 
 .container .title, .container .subtitle, .container .paragraph {
@@ -32,5 +33,6 @@
 @media(max-width: 733px) {
     .container, .footer {
         max-width: 400px;
+        flex-direction: column;
     }
 }
