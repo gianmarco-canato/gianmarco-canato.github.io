@@ -1,78 +1,81 @@
-body {
-    font-family: "Zilla Slab", serif;
-    background-color: black;
-    color: white;
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Space+Grotesk:wght@300..700&display=swap');
+
+/* GLOBAL RESET OF SPACING  */
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
-p {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-size: 1.1em;
+
+body {
+    background-color: black;
+    color: snow ;
+    font-family: "Space Grotesk", sans-serif;
 }
 
 ul {
     list-style-type: none;
     list-style-position: outside;
-    margin-left: -2.5em
-}
-
-li {
-    margin-top: 20px;
-    font-size: 1.5em;
-}
-
-.subtitle {
-    font-family: "Zilla Slab", serif;
-    font-size: 1.5em;
-}
-
-.small-text {
-    font-family: "Zilla Slab", serif;
-    font-size: 1em;
-}
-
-.main-container {
-    max-width: 96%;
-    margin-left: 2%;
-}
-
-
-.header {
-    width: 100%; 
-    margin-top: 10%;
-}
-
-.cnt-container {
-    display: flex;
-    justify-content: left;
-}
-
-.col1 {
-    flex: 1;
-
-}
-
-.col2 {
-    flex: 6;
-    padding-left: 5%; 
-    margin-left: 5%;
-    column-width: 20em;
-    
-}
-
-.row {
-    margin-top: 10px;
+    padding-inline-start: 0px;
 }
 
 a {
-    font-family: "Zilla Slab", serif;
-    font-weight: bold;
-    color: white;
     text-decoration: none;
+    color: snow;
 }
 
-  /* Change the link color on hover */
 a:hover {
-        background-color: white;
-        color: black;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+}
+
+p, h1, h2 {
+    margin: 10px 0;
+}
+
+
+h1 {
+    font-size: 48px;
+    font-weight: bold;
+} 
+h2 {
+    font-size: 36px;
+    font-weight: 100;
+}
+
+.contnav {
+    width: 100%;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 15% auto;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.container .title, .container .subtitle, .container .navmenu {
+    margin: 0 10px;
+}
+
+.container .title, .container .subtitle {
+    flex: 2;
+}
+
+.container .navmenu {
+    font-size: 24px;
+    flex: 1;
+}
+
+
+@media(max-width: 733px) {
+    .container {
+        max-width: 400px;
+    }
 }
