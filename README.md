@@ -1,6 +1,10 @@
 # Test website
 ## Changelog
 
+0.3 Redesign better landing page
+
+
+
 0.2  Redesign
 
 
