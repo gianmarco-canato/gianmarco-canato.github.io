@@ -8,11 +8,19 @@
     margin: 0;
 }
 
+/* This is made to set variables */
+
 :root {
     --max-width: 1600px;
     --bg-col: black;
     --text-col: white;
 }
+
+/* Smooth scrolling! */
+
+html {
+    scroll-behavior: smooth;
+  }
 
 body {
     font-family: "Space Grotesk", sans-serif;
@@ -39,6 +47,9 @@ details {
     summary {
         list-style-type: none;
 
+    }
+    summary:hover {
+        text-decoration: underline;
     }
 }
 
@@ -120,7 +131,7 @@ h1 {
 }
 
 h2 {
-    font-size: 36px;
+    font-size: 32px;
     font-weight: normal;
     padding: 10px 0;
     display: inline;
@@ -191,6 +202,11 @@ iframe {
                         font-size: 20px;
                     }
                 }
+            }
+
+            iframe {
+                max-width: 350px;
+                max-height: 500px;
             }
         }
     }
