@@ -177,7 +177,7 @@ iframe {
 @media(max-width: 768px) {
 
     .h0 {
-        font-size: 9vw;
+        font-size: 9vh;
     }
 
     .media, .events {
@@ -203,5 +203,9 @@ iframe {
     .regular {
         font-size: 1.25rem;
         font-weight: 400;
+    }
+
+    .h0 {
+        font-size: 9vw;
     }
 }
