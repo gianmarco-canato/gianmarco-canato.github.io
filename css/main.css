@@ -104,7 +104,7 @@ footer {
 }
 
 .h0 {
-    font-size: 4rem;
+    font-size: 8vh;
 }
 
 .pad {
@@ -176,9 +176,6 @@ iframe {
 
 @media(max-width: 768px) {
 
-    .h0 {
-        font-size: 9vh;
-    }
 
     .media, .events {
         grid-template-columns: auto;
