@@ -20,7 +20,7 @@
 }
 
 :root {
-    --bg-color: black;
+    --bg-color: #111111;
     --text-color: white;
     --font-fam: "Inter", sans-serif;
 }
@@ -59,7 +59,7 @@ a {
 nav {
     position: fixed;
     width: 100vw;
-    background-color: rgba(0, 0, 0, 0.85);
+    background-color: var(--bg-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -134,7 +134,7 @@ footer {
     min-height: 100vh;
 }
 
-.media {
+/* .media {
     display: grid;
     grid-template-columns: 0.3fr 0.2fr 0.5fr;
     grid-template-rows: auto;
@@ -145,14 +145,19 @@ footer {
         display: block;
         padding: 1rem 0px;
     }
-}
+} */
 
-.events {
+.media, .events {
     display: grid;
     grid-template-columns: 0.3fr 0.7fr;
     grid-template-rows: auto;
     align-items: baseline;
     gap: 10px;
+
+    iframe {
+        display: block;
+        padding: 1rem 0px;
+    }
 }
 
 .about {
