@@ -18,8 +18,10 @@
 
 
 /* ---------- 1. VARIABILI ---------- */
-/* Schema CARTA E INCHIOSTRO BLU (attivo).
+/* Schema CARTA, TESTO OFF-BLACK, ACCENTO BLU ELETTRICO (attivo).
    Altri schemi già provati — per cambiare, sostituisci le sei righe dei colori:
+   carta + inchiostro blu: --paper #f3f2ee; --ink #1b28e0; --muted #5f66c4; --rule #cfd1ee;
+              --accent #0c0c14; --accent-text #0c0c14
    blu pieno: --paper #1b28e0; --ink #ffffff; --muted #cdd1ff; --rule #4552f0;
               --accent #0c0c14; --accent-text #ffffff
    off-black: --paper #111110; --ink #efede6; --muted #8e8a81; --rule #34322e;
@@ -28,11 +30,11 @@
               --accent #ff3d00; --accent-text #ff3d00 */
 :root {
   --paper:  #f3f2ee;   /* sfondo: carta chiara, leggermente calda */
-  --ink:    #1b28e0;   /* testo: blu elettrico */
-  --muted:  #5f66c4;   /* testo secondario: blu attenuato */
-  --rule:   #cfd1ee;   /* linee sottili, segnaposto */
-  --accent: #0c0c14;   /* nero: parole in evidenza, etichette, fasce al passaggio del mouse */
-  --accent-text: #0c0c14; /* nero anche nei testi piccoli */
+  --ink:    #141414;   /* testo: off-black */
+  --muted:  #6b6862;   /* testo secondario: grigio caldo */
+  --rule:   #d5d2ca;   /* linee sottili, segnaposto */
+  --accent: #1b28e0;   /* blu elettrico: parole in evidenza, etichette, fasce al passaggio del mouse */
+  --accent-text: #1b28e0; /* blu elettrico anche nei testi piccoli */
 
   --serif: "Instrument Serif", Georgia, serif;
   --sans:  "IBM Plex Sans", system-ui, sans-serif;
@@ -169,7 +171,7 @@ h1, h2, h3 { font-weight: 400; margin: 0; }
 .prose { max-width: 38em; font-size: 1.08rem; }
 .prose p { margin: 0 0 1.1em; }
 .prose a { border-bottom: 1px solid var(--ink); }
-.prose a:hover { background: var(--accent); }
+.prose a:hover { background: var(--accent); color: #fff; border-bottom-color: var(--accent); }
 .prose h3 {
   font-family: var(--mono);
   font-size: .8rem;
@@ -424,7 +426,7 @@ figcaption { margin-top: .6rem; font-family: var(--mono); font-size: .74rem; col
 
 /* Grana: rumore generato da un filtro SVG, steso sopra tutta la pagina.
    --grain regola l'intensità (0 = spenta, .12 = molto evidente). */
-:root { --grain: .05; }
+:root { --grain: .09; }
 
 body::before {
   content: "";
@@ -490,7 +492,7 @@ body::before {
 .portrait-frame {
   aspect-ratio: 3 / 4;
   overflow: hidden;
-  background: var(--ink);   /* il blu che "colora" la foto */
+  background: var(--accent);   /* il blu che "colora" la foto */
 }
 
 /* Bicromia: foto in bianco e nero fusa con il fondo blu.
