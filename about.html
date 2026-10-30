@@ -28,10 +28,24 @@
 
   <main class="wrap">
 
-    <section class="intro">
+    <section class="intro intro-portrait">
       <p class="label">About</p>
-      <h1 class="display">Gianmarco Canato</h1>
+      <h1 class="display">
+        <span class="line">Gianmarco</span>
+        <span class="line in-1">Canato</span>
+      </h1>
       <p class="lede">Bassoonist, electronic musician and improviser, based in Varese.</p>
+
+      <!-- RITRATTO
+           Per mettere la foto: salvala come img/portrait.jpg (verticale, 1200–1600 px
+           sul lato lungo), poi sostituisci la riga <div class="portrait-frame ph" …></div>
+           con:
+           <div class="portrait-frame"><img src="img/portrait.jpg" alt="Portrait of Gianmarco Canato"></div>
+           La foto appare in bicromia blu; al passaggio del mouse torna ai colori originali. -->
+      <figure class="portrait">
+        <div class="portrait-frame ph" data-label="portrait"></div>
+        <figcaption>Photo: Name Surname</figcaption>
+      </figure>
     </section>
 
     <section class="split">

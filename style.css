@@ -13,6 +13,7 @@
    8. Footer
    9. Schermi piccoli (telefono)
    10. Grana e nome gigante
+   11. Ritratto (pagina About)
    ========================================================= */
 
 
@@ -467,3 +468,60 @@ body::before {
   transition: -webkit-text-stroke-color .3s;
 }
 .wordmark:hover { color: var(--accent); -webkit-text-stroke-color: var(--accent); }
+
+
+/* ---------- 11. RITRATTO (pagina About) ----------
+   Nome a sinistra, foto verticale a destra, leggermente inclinata.
+   La riga vuota finale (1fr) assorbe l'altezza della foto,
+   così il testo a sinistra resta compatto sotto il nome. */
+.intro-portrait { grid-template-rows: auto auto auto 1fr; }
+.intro-portrait .label   { grid-column: 1 / 9; grid-row: 1; }
+.intro-portrait .display { grid-column: 1 / 9; grid-row: 2; }
+.intro-portrait .lede    { grid-column: 1 / 7; grid-row: 3; align-self: start; }
+
+.portrait {
+  grid-column: 9 / 13;
+  grid-row: 1 / 5;
+  align-self: start;
+  margin: 0;
+  transform: rotate(.8deg);
+}
+
+.portrait-frame {
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: var(--ink);   /* il blu che "colora" la foto */
+}
+
+/* Bicromia: foto in bianco e nero fusa con il fondo blu.
+   Le ombre diventano blu, le luci restano chiare. */
+.portrait-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.15) brightness(1.05);
+  mix-blend-mode: screen;
+  transition: filter .4s;
+}
+.portrait:hover .portrait-frame img { filter: none; mix-blend-mode: normal; }
+
+/* Segnaposto a righe finché non c'è la foto */
+.portrait-frame.ph {
+  background:
+    repeating-linear-gradient(-45deg, transparent 0 11px, var(--rule) 11px 12px),
+    var(--paper);
+}
+
+@media (max-width: 760px) {
+  .intro-portrait { grid-template-rows: none; }
+  .intro-portrait .label,
+  .intro-portrait .display,
+  .intro-portrait .lede { grid-column: 1 / -1; grid-row: auto; }
+  .portrait {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    width: 72%;
+    margin-left: auto;
+    transform: rotate(.8deg);
+  }
+}
