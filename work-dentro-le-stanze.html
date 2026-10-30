@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dentro le stanze — Gianmarco Canato</title>
+  <meta name="description" content="Short description of the project for search engines.">
+
+  <!-- Font (uguali in tutte le pagine) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+  <!-- ===== HEADER (identico in tutte le pagine: cambia solo aria-current) ===== -->
+  <header class="site-header">
+    <a class="site-name" href="index.html">Gianmarco Canato <span>/ bassoon · electronics · improvisation</span></a>
+    <nav class="nav">
+      <a href="works.html" aria-current="page">Works</a>
+      <a href="research.html">Research</a>
+      <a href="agenda.html">Agenda</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+  <p class="side-note" aria-hidden="true">Milan — Bern · 2026</p>
+
+  <main class="wrap">
+
+    <section class="project-head">
+      <h1 class="display">Dentro le stanze</h1>
+      <dl class="meta">
+        <div><dt>Year</dt><dd>20XX</dd></div>
+        <div><dt>Format</dt><dd>Format</dd></div>
+        <div><dt>Means</dt><dd>Instruments, media</dd></div>
+        <div><dt>With</dt><dd>Collaborators</dd></div>
+      </dl>
+    </section>
+
+    <section class="project-body">
+
+      <!-- MEDIA PRINCIPALE: video 16:9.
+           Per incorporare un video sostituisci il <div class="embed ph"> con:
+           YouTube → <div class="embed"><iframe src="https://www.youtube-nocookie.com/embed/CODICE" title="titolo" allowfullscreen></iframe></div>
+           Vimeo   → <div class="embed"><iframe src="https://player.vimeo.com/video/NUMERO" title="titolo" allowfullscreen></iframe></div> -->
+      <figure class="lead-media">
+        <div class="embed ph" data-label="video"></div>
+        <figcaption>Caption — place, date, photo/video credit.</figcaption>
+      </figure>
+
+      <div class="prose">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+      </div>
+
+      <!-- MEDIA SECONDARIO: audio.
+           Bandcamp   → <div class="embed-audio"><iframe src="https://bandcamp.com/EmbeddedPlayer/album=NUMERO/size=small/" title="titolo"></iframe></div>
+           SoundCloud → <div class="embed-audio"><iframe src="https://w.soundcloud.com/player/?url=LINK-DEL-BRANO" title="titolo"></iframe></div>
+           Il codice esatto lo trovi sul sito di Bandcamp/SoundCloud alla voce "Share" → "Embed". -->
+      <figure class="side-media">
+        <div class="embed-audio ph" style="height:120px" data-label="audio"></div>
+        <figcaption>Audio — title, date.</figcaption>
+      </figure>
+
+    </section>
+
+    <a class="back" href="works.html">← All works</a>
+
+  </main>
+
+  <!-- Nome gigante, tagliato dai bordi (decorativo) -->
+  <div class="wordmark" aria-hidden="true">Gianmarco Canato</div>
+
+  <!-- ===== FOOTER (identico in tutte le pagine) ===== -->
+  <footer class="site-footer">
+    <div class="contact">
+      <p class="label">Contact</p>
+      <p><a href="mailto:email@example.com">email@example.com</a></p>
+    </div>
+    <div class="links">
+      <a href="https://example.com">Bandcamp</a>
+      <a href="https://example.com">Vimeo</a>
+      <a href="https://example.com">Instagram</a>
+    </div>
+    <p class="colophon">© 2026 Gianmarco Canato<br>Last updated: October 2026</p>
+  </footer>
+
+</body>
+</html>

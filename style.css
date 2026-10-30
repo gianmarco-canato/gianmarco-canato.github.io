@@ -1,0 +1,469 @@
+/* =========================================================
+   GIANMARCO CANATO — foglio di stile unico del sito
+   ---------------------------------------------------------
+   Indice:
+   1. Variabili (colori, font, misure)  ← per cambiare l'aspetto
+                                          generale basta toccare qui
+   2. Base
+   3. Header e navigazione
+   4. Tipografia editoriale
+   5. Galleria irregolare (home)
+   6. Liste: works, agenda, writings
+   7. Pagina progetto e media incorporati
+   8. Footer
+   9. Schermi piccoli (telefono)
+   10. Grana e nome gigante
+   ========================================================= */
+
+
+/* ---------- 1. VARIABILI ---------- */
+/* Schema CARTA E INCHIOSTRO BLU (attivo).
+   Altri schemi già provati — per cambiare, sostituisci le sei righe dei colori:
+   blu pieno: --paper #1b28e0; --ink #ffffff; --muted #cdd1ff; --rule #4552f0;
+              --accent #0c0c14; --accent-text #ffffff
+   off-black: --paper #111110; --ink #efede6; --muted #8e8a81; --rule #34322e;
+              --accent #1d2cf0; --accent-text #8d97ff
+   chiaro con arancio: --paper #f2f0ea; --ink #151515; --muted #6d6a63; --rule #d4cfc4;
+              --accent #ff3d00; --accent-text #ff3d00 */
+:root {
+  --paper:  #f3f2ee;   /* sfondo: carta chiara, leggermente calda */
+  --ink:    #1b28e0;   /* testo: blu elettrico */
+  --muted:  #5f66c4;   /* testo secondario: blu attenuato */
+  --rule:   #cfd1ee;   /* linee sottili, segnaposto */
+  --accent: #0c0c14;   /* nero: parole in evidenza, etichette, fasce al passaggio del mouse */
+  --accent-text: #0c0c14; /* nero anche nei testi piccoli */
+
+  --serif: "Instrument Serif", Georgia, serif;
+  --sans:  "IBM Plex Sans", system-ui, sans-serif;
+  --mono:  "IBM Plex Mono", ui-monospace, monospace;
+
+  --gutter: clamp(16px, 4vw, 56px);  /* margine laterale */
+  --max: 1440px;                     /* larghezza massima */
+}
+
+
+
+/* ---------- 2. BASE ---------- */
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17.5px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, video, iframe { display: block; max-width: 100%; }
+
+a { color: inherit; text-decoration: none; transition: color .15s; }
+a:hover { color: var(--accent-text); }
+
+::selection { background: var(--accent); color: #fff; }
+
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+
+/* ---------- 3. HEADER E NAVIGAZIONE ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: .5rem 2rem;
+  padding: 1.1rem var(--gutter);
+  background: var(--paper);
+  border-bottom: 1px solid var(--ink);
+  font-family: var(--mono);
+  font-size: .82rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.site-name span { color: var(--muted); }
+
+.nav { display: flex; flex-wrap: wrap; gap: .4rem 1.6rem; }
+
+/* La pagina in cui ti trovi: aggiungi aria-current="page" al link */
+.nav a[aria-current="page"] { color: #fff; background: var(--accent); padding: .15rem .45rem; margin: -.15rem -.45rem; }
+.nav a[aria-current="page"]::before { content: "↘ "; }
+
+/* Scritta verticale sul bordo destro (solo schermi larghi) */
+.side-note {
+  position: fixed;
+  right: calc(var(--gutter) / 2 - .6em);
+  bottom: 2rem;
+  writing-mode: vertical-rl;
+  font-family: var(--mono);
+  font-size: .72rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+@media (max-width: 1100px) { .side-note { display: none; } }
+
+
+/* ---------- 4. TIPOGRAFIA EDITORIALE ---------- */
+h1, h2, h3 { font-weight: 400; margin: 0; }
+
+/* Etichetta piccola in monospace (date, categorie, numeri) */
+.label {
+  font-family: var(--mono);
+  font-size: .76rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--muted);
+}
+
+/* Titolo grande in serif */
+.display {
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 7.6vw, 8rem);
+  line-height: .9;
+  letter-spacing: -.02em;
+}
+
+/* Righe sfalsate dentro un titolo grande */
+.display .line { display: block; }
+.display .in-1 { padding-left: 8.33%; }
+.display .in-2 { padding-left: 25%; }
+.display .in-3 { padding-left: 41.66%; }
+.display em { color: var(--accent); }
+
+/* Apertura di pagina: titolo e testo sfalsati sulla griglia */
+.intro {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+  padding: clamp(3rem, 10vw, 8rem) 0 clamp(3rem, 8vw, 6rem);
+}
+.intro .label   { grid-column: 1 / -1; }
+.intro .display { grid-column: 1 / -1; }
+.intro .lede    { grid-column: 7 / 12; margin: 1.5rem 0 0; font-size: 1.15rem; max-width: 34em; }
+
+/* Intestazione di sezione con linea sopra */
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: .9rem 0 2.5rem;
+  border-top: 1px solid var(--ink);
+}
+.section-title { font-family: var(--serif); font-size: clamp(1.8rem, 3.4vw, 2.8rem); }
+
+/* Testo lungo */
+.prose { max-width: 38em; font-size: 1.08rem; }
+.prose p { margin: 0 0 1.1em; }
+.prose a { border-bottom: 1px solid var(--ink); }
+.prose a:hover { background: var(--accent); }
+.prose h3 {
+  font-family: var(--mono);
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--muted);
+  margin: 2.5em 0 .8em;
+}
+
+/* Due colonne asimmetriche: etichetta a sinistra, contenuto a destra */
+.split {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+  padding: 1rem 0 5rem;
+  border-top: 1px solid var(--ink);
+}
+.split > :first-child { grid-column: 1 / 4; }
+.split > :last-child  { grid-column: 5 / 12; }
+
+
+/* ---------- 5. GALLERIA IRREGOLARE ----------
+   La griglia ha 12 colonne. Ogni riquadro (.tile) si regola
+   combinando poche classi:
+
+   larghezza   w-3 … w-8    → quante colonne occupa
+   inizio      s-1 … s-8    → da quale colonna parte
+   spostamento drop-1, drop-2 (in giù), lift (in su)
+   formato     r-wide (16:9), r-land (4:3), r-tall (3:4), r-square
+   inclinato   tilt, tilt-r
+   ------------------------------------------------------ */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: clamp(1rem, 2.5vw, 2.5rem);
+  row-gap: clamp(3rem, 7vw, 6.5rem);
+  align-items: start;
+  padding-bottom: 7rem;
+}
+
+.tile { display: block; grid-column-end: span 4; }
+
+.w-3 { grid-column-end: span 3; }
+.w-4 { grid-column-end: span 4; }
+.w-5 { grid-column-end: span 5; }
+.w-6 { grid-column-end: span 6; }
+.w-7 { grid-column-end: span 7; }
+.w-8 { grid-column-end: span 8; }
+
+.s-1 { grid-column-start: 1; }  .s-2 { grid-column-start: 2; }
+.s-3 { grid-column-start: 3; }  .s-4 { grid-column-start: 4; }
+.s-5 { grid-column-start: 5; }  .s-6 { grid-column-start: 6; }
+.s-7 { grid-column-start: 7; }  .s-8 { grid-column-start: 8; }
+
+.drop-1 { margin-top: 4rem; }
+.drop-2 { margin-top: 9rem; }
+.lift   { margin-top: -3rem; }
+
+.tilt   { transform: rotate(-1.1deg); }
+.tilt-r { transform: rotate(.9deg); }
+
+/* Contenitore dell'immagine */
+.media {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: var(--rule);
+}
+.r-wide   .media { aspect-ratio: 16 / 9; }
+.r-land   .media { aspect-ratio: 4 / 3; }
+.r-tall   .media { aspect-ratio: 3 / 4; }
+.r-square .media { aspect-ratio: 1 / 1; }
+
+.media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.05);
+  transition: filter .4s, transform .6s;
+}
+.tile:hover .media img { filter: none; transform: scale(1.02); }
+
+/* Segnaposto a righe finché non c'è un'immagine vera.
+   Il testo viene dall'attributo data-label="..." */
+.ph {
+  display: grid;
+  place-items: center;
+  background:
+    repeating-linear-gradient(-45deg, transparent 0 11px, var(--rule) 11px 12px),
+    var(--paper);
+  outline: 1px solid var(--rule);
+  outline-offset: -1px;
+}
+.ph::after {
+  content: attr(data-label);
+  font-family: var(--mono);
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--muted);
+  background: var(--paper);
+  padding: .2rem .5rem;
+}
+.tile:hover .ph { outline: 2px solid var(--accent); }
+
+/* Didascalia sotto l'immagine */
+.caption {
+  display: grid;
+  grid-template-columns: 2.2rem 1fr auto;
+  gap: .3rem .6rem;
+  margin-top: .8rem;
+  font-family: var(--mono);
+  font-size: .76rem;
+  color: var(--muted);
+}
+.caption .num { justify-self: start; align-self: start; color: #fff; background: var(--accent); padding: 0 .3rem; }
+.caption .title {
+  font-family: var(--sans);
+  font-size: 1rem;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.caption .what { grid-column: 2 / 3; }
+.tile:hover .caption .title { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .2em; }
+
+
+/* ---------- 6. LISTE: WORKS, AGENDA, WRITINGS ----------
+   Ogni riga è un <li> con quattro <span>: anno/data, titolo,
+   tipo/luogo, nota. Al passaggio del mouse la riga scivola. */
+.index { list-style: none; margin: 0 0 6rem; padding: 0; }
+
+.index li { border-top: 1px solid var(--rule); }
+.index li:last-child { border-bottom: 1px solid var(--rule); }
+
+.index .row {
+  display: grid;
+  grid-template-columns: 8rem 1fr 14rem 7rem;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 1rem 0;
+  transition: padding .25s, color .15s;
+}
+a.row:hover { padding-left: 1.2rem; background: var(--accent); color: #fff; }
+a.row:hover span { color: #fff; }
+
+.index .when, .index .where, .index .note {
+  font-family: var(--mono);
+  font-size: .78rem;
+  color: var(--muted);
+}
+.index .note { text-align: right; }
+.index .what { font-size: 1.12rem; }
+
+/* Una riga "passata" (agenda) */
+.index .past { opacity: .55; }
+
+
+/* ---------- 7. PAGINA PROGETTO E MEDIA ---------- */
+.project-head {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+  padding: clamp(3rem, 8vw, 6rem) 0 3rem;
+}
+.project-head .display { grid-column: 1 / 10; }
+.project-head .meta    { grid-column: 10 / 13; align-self: end; }
+
+/* Scheda tecnica (anno, formato, organico…) */
+.meta { margin: 0; font-family: var(--mono); font-size: .78rem; }
+.meta div { display: flex; justify-content: space-between; gap: 1rem; padding: .45rem 0; border-top: 1px solid var(--rule); }
+.meta dt { color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+.meta dd { margin: 0; text-align: right; }
+
+.project-body {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 3rem 1.5rem;
+  padding-bottom: 6rem;
+}
+.project-body .lead-media { grid-column: 1 / -1; }
+.project-body .prose      { grid-column: 4 / 11; }
+.project-body .side-media { grid-column: 7 / 13; }
+.project-body .side-media-l { grid-column: 1 / 7; }
+
+/* Video incorporato (YouTube, Vimeo): sempre 16:9 */
+.embed { position: relative; aspect-ratio: 16 / 9; background: var(--rule); }
+.embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+/* Segnaposto a righe anche dentro i riquadri video */
+.embed.ph {
+  background:
+    repeating-linear-gradient(-45deg, transparent 0 11px, var(--rule) 11px 12px),
+    var(--paper);
+}
+
+/* Audio incorporato (Bandcamp, SoundCloud): altezza fissa */
+.embed-audio iframe { width: 100%; height: 120px; border: 0; }
+
+figure { margin: 0; }
+figcaption { margin-top: .6rem; font-family: var(--mono); font-size: .74rem; color: var(--muted); }
+
+.back { display: inline-block; margin: 0 0 3rem; font-family: var(--mono); font-size: .8rem; }
+
+
+/* ---------- 8. FOOTER ---------- */
+.site-footer {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+  padding: 2rem var(--gutter) 3rem;
+  border-top: 1px solid var(--ink);
+  font-family: var(--mono);
+  font-size: .78rem;
+}
+.site-footer .contact { grid-column: 1 / 6; }
+.site-footer .links   { grid-column: 7 / 10; display: flex; flex-direction: column; gap: .2rem; }
+.site-footer .colophon { grid-column: 10 / 13; color: var(--muted); text-align: right; }
+.site-footer p { margin: 0 0 .5rem; }
+.site-footer a { border-bottom: 1px solid transparent; }
+.site-footer a:hover { border-bottom-color: var(--accent-text); }
+
+
+/* ---------- 9. SCHERMI PICCOLI ---------- */
+@media (max-width: 760px) {
+  body { font-size: 16px; }
+  .display .in-1 { padding-left: 6%; }
+  .display .in-2 { padding-left: 14%; }
+  .display .in-3 { padding-left: 22%; }
+  .site-header { position: static; }
+
+  .intro .display, .intro .lede,
+  .split > :first-child, .split > :last-child,
+  .project-head .display, .project-head .meta,
+  .project-body .prose, .project-body .side-media, .project-body .side-media-l,
+  .site-footer .contact, .site-footer .links, .site-footer .colophon {
+    grid-column: 1 / -1;
+    text-align: left;
+  }
+
+  /* Galleria: una colonna, ma con rientri alternati per non perdere l'irregolarità */
+  .gallery .tile { grid-column: 1 / -1; margin-top: 0; }
+  .gallery .tile:nth-child(odd)  { margin-right: 12%; }
+  .gallery .tile:nth-child(even) { margin-left: 18%; }
+
+  .index .row { grid-template-columns: 1fr auto; gap: .2rem 1rem; }
+  .index .what  { grid-column: 1 / -1; grid-row: 2; }
+  .index .where { grid-column: 1 / -1; grid-row: 3; }
+}
+
+
+/* ---------- 10. GRANA E NOME GIGANTE ---------- */
+
+/* Grana: rumore generato da un filtro SVG, steso sopra tutta la pagina.
+   --grain regola l'intensità (0 = spenta, .12 = molto evidente). */
+:root { --grain: .05; }
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: -50%;
+  z-index: 100;
+  pointer-events: none;
+  opacity: var(--grain);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 1s steps(6) infinite;
+}
+
+/* La grana si sposta a scatti, come il rumore di un segnale */
+@keyframes grain {
+  0%   { transform: translate(0, 0); }
+  20%  { transform: translate(-3%, 2%); }
+  40%  { transform: translate(2%, -4%); }
+  60%  { transform: translate(-4%, -1%); }
+  80%  { transform: translate(3%, 3%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Chi ha attivato "riduci movimento" nel sistema vede la grana ferma */
+@media (prefers-reduced-motion: reduce) {
+  body::before { animation: none; }
+}
+
+/* Nome gigante in contorno, tagliato a destra e in basso */
+.wordmark {
+  height: .6em;
+  overflow: hidden;
+  margin-top: 4rem;
+  padding-left: var(--gutter);
+  font-family: var(--serif);
+  font-size: 19vw;
+  line-height: .8;
+  letter-spacing: -.03em;
+  white-space: nowrap;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--muted);
+  transition: -webkit-text-stroke-color .3s;
+}
+.wordmark:hover { color: var(--accent); -webkit-text-stroke-color: var(--accent); }

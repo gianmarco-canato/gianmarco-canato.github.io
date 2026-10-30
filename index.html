@@ -1,111 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gianmarco Canato — bassoon and live electronics</title>
+  <meta name="description" content="Gianmarco Canato: bassoonist, electronic musician and improviser working between classical music, free improvisation and experimental music theatre.">
 
-    <link rel="stylesheet" href="/css/main.css">
-
-    <title>Gianmarco Canato</title>
+  <!-- Font (uguali in tutte le pagine) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <header id="home">
-        <nav>
-            <h2>gianmarco.canato</h2>
-            <ul>
-                <li><a href="#home" class="button">.home ↗</a></li>
-                <li><a href="#media" class="button">.works and media ↗</a></li>
-                <li><a href="#events" class="button">.events ↗</a></li>
-                <li><a href="#about" class="button">.about ↗</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <section class="introduction pad">
-        <h1 class="h0">.bassoonist</h1>
-        <h1 class="h0">.electroacoustic music performer</h1>
-        <h1 class="h0">.composer</h1>
-        <h1 class="h0">.teacher</h1>
+  <!-- ===== HEADER (identico in tutte le pagine: cambia solo aria-current) ===== -->
+  <header class="site-header">
+    <a class="site-name" href="index.html">Gianmarco Canato <span>/ bassoon · electronics · improvisation</span></a>
+    <nav class="nav">
+      <a href="works.html">Works</a>
+      <a href="research.html">Research</a>
+      <a href="agenda.html">Agenda</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+  <p class="side-note" aria-hidden="true">Varese — Bern · 2026</p>
+
+  <main class="wrap">
+
+    <!-- ===== APERTURA ===== -->
+    <section class="intro">
+      <p class="label">Selected works &amp; research</p>
+      <!-- Ogni <span class="line"> è una riga; in-1, in-2, in-3 la spostano a destra -->
+      <h1 class="display">
+        <span class="line">Bassoon and live electronics</span>
+        <span class="line in-1">between classical music,</span>
+        <span class="line in-2">free improvisation <em>and</em></span>
+        <span class="line in-3">experimental</span>
+        <span class="line">music theatre.</span>
+      </h1>
+      <p class="lede">I am a bassoonist, electronic musician and improviser based in Varese. My practice and doctoral research look at how an improvising musician acts through the means a performance makes available: instrument, electronics, movement, text and image.</p>
     </section>
 
-    <section class="media pad" id="media">
-        <h1>.works and media</h1><h1></h1>
-        <h2>.bassoon</h2>
-        <p>
-            Willy Merz, <strong>GER</strong>, for bassoon and piano. Recorded in December 2020.
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/3P0IXRlA4Ww?si=Ij-bBj8WYLI-SGzd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            Camille Saint-Saens, <strong>Sonata for bassoon and piano op. 168</strong>. Recorded in December 2020.
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/82GsJkIp2lw?si=6lKaKBP2wdzutNVz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </p>
-        <h2>.acousmatic and multimedia</h2>
-        <p>
-            <strong>A Fine Turno</strong>, for fixed media.
-            <iframe style="border: 0; width: 350px; height: 475px;" src="https://bandcamp.com/EmbeddedPlayer/track=914604818/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/transparent=true/" seamless><a href="https://gianmarcocanato.bandcamp.com/track/a-fine-turno">A Fine Turno by Gianmarco Canato</a></iframe>
-            <strong>Fonemosintesi</strong>, for fixed media (quadrafonic). Stereo recording below.
-            <iframe style="border: 0; width: 350px; height: 475px;" src="https://bandcamp.com/EmbeddedPlayer/track=1834115411/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/transparent=true/" seamless><a href="https://gianmarcocanato.bandcamp.com/track/fonemosintesi">Fonemosintesi by Gianmarco Canato</a></iframe>
-        </p>
-        <h2>.improvisation</h2>
-        <p>
-            <strong>Improvviso</strong>, free impro with live electronics. Recorded in 2023, with Walter Prati, electronics. 
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/qEh-YsETxw0?si=MPCOS7NNmMD_ziAN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </p>
-        <p><a href="#home" class="button">.back ↗</a></p>
-    </section>
+    <!-- ===== GALLERIA =====
+         Per aggiungere un lavoro: copia un blocco <a class="tile">…</a>,
+         cambia link, immagine e didascalia, e gioca con le classi
+         (w-, s-, drop-, tilt). Per l'immagine sostituisci
+         <div class="media ph" data-label="…"></div> con
+         <div class="media"><img src="img/nome-file.jpg" alt="descrizione"></div> -->
+    <div class="section-head">
+      <h2 class="section-title">Works</h2>
+      <a class="label" href="works.html">Full index →</a>
+    </div>
 
-    <section class="events pad" id="events">
-        <h1>.events</h1>
-        <h1></h1>
-        <h2>25/08 — Yehudi Menuhin Forum Bern</h2>
-        <h2 class="regular">W. A. Mozart, Serenate K375 for wind octet. FKM Bern.</h2>
-        <h2>14/09 — Chiesa di Crosio della Valle</h2>
-        <h2 class="regular">Chamber Music with Manuela Perpenti (Flute) and Francesca Facetti (Guitar). <br>Program TBD
-        </h2>
-        <h2>12/10 — Segrate</h2>
-        <h2 class="regular">Chamber Music with Pietro Montemagni (Viola). <br>Music by Elliott Carter, Philippe Hersant,
-            Mattia Olgiati, Gianmarco Canato.</h2>
-        <h2>26/10 — Induno Olona</h2>
-        <h2 class="regular">Chamber Music with Manuela Perpenti (Flute) and Francesca Rivabene (Harpsichord/Piano).
-            <br>Music by C.P.E. Bach, J.S. Bach, G.P. Telemann, L. van Beethoven.</h2>
-        <h2>13 and 15/12 — Reggio Emilia/Parma</h2>
-        <h2 class="regular">Derby Elettrico. <br>Music for 15 acoustic and electronic improvisers.</h2>
-        <p><a href="#home" class="button">.back ↗</a></p>
-    </section>
+    <div class="gallery">
 
-    <section class="about pad" id="about">
-        <h1>.about</h1>
-        <div class="flex">
-            <p>
-                Gianmarco Canato studied bassoon with Diego Chenna and Maurizio Orsini at the Conservatorio “G.
-                Cantelli” in Novara, where he completed his Bachelor in Music Performance with recognition. He proceeded
-                to further his studies with Daniele Galaverna and Vincent Gaudel at the Hochschule der Kuenste in Bern,
-                where he attains both a Master in Music Performance (2018) and a Master Specialized in Soloism (2021).
-                In 2024 he completes a Master in Electroacustic Music at the “Conservatorio di Como”, where he studied
-                with Walter Prati, Sandro Mungianu, Alessio Sabella.
-            </p>
-            <p>Gianmarco Canato followed bassoon masterclasses with Carlo Colombo, Paolo Calligaris, Vincenzo Menghini,
-                Gabriele Screpis, Christian Kunert. He attended improvisation workshops with Alberto Mandarini, Walter
-                Prati, Giancarlo Schiaffini, Francesco Giomi. He played as second bassoon in the “Pomeriggi Musicali”
-                Chamber Orchestra in Milan, the Berner Symphonieorchester; he often works as first or second bassoon
-                with Musikkollegium Winterthur and “Camerata Ducale” chamber orchestra in Vercelli. He worked with
-                renown musicians, like Simone Bernardini, Olivier Darbellay, Roberto Gonzalez-Monja, Florent Heau. He
-                participated in contemporary music performances working with Lennart Dohms, Peter Rundel, Enno Poppe,
-                and performed his own compositions in festival such as Dialoghi Sonori in Milan and SpazioMusica in
-                Cagliari. </p>
-            <p>He’s currently active as a freelance musician, specialized in chamber music, contemporary and
-                electroacustic music. He performs with different ensembles and works as bassoon and wind chamber music
-                professor with the cooperative “Musica per Varese”. He regularly holds masterclass for bassoon reed
-                construction at the University of Arts in Bern. Since 2024, he’s a professor at the “Civica Scuola di
-                Musica Claudio Abbado” in Milan, currently teaching History of Electroacustic Music. </p>
+      <a class="tile w-7 s-1 r-wide" href="work-dentro-le-stanze.html">
+        <div class="media ph" data-label="photo / video still"></div>
+        <div class="caption">
+          <span class="num">01</span>
+          <span class="title">Dentro le stanze</span>
+          <span>2021</span>
+          <span class="what">Multimodal performance for bassoon, fixed media, live electronics, written short stories.</span>
         </div>
-        <h2><a href="mailto:g.canato1@gmail.com" class="button">.contact me ↗</a></h2>
-        <p><a href="#home" class="button">.back ↗</a></p>
-    </section>
+      </a>
 
-    <footer>
-        © Gianmarco Canato 2024
-    </footer>
+      <a class="tile w-4 s-9 r-tall drop-2 tilt-r" href="work-guida-rapida-evocazione-dio-antico.html">
+        <div class="media ph" data-label="photo"></div>
+        <div class="caption">
+          <span class="num">02</span>
+          <span class="title">Guida rapida all'evocazione di un dio antico</span>
+          <span>2023</span>
+          <span class="what">Graphic score for open ensemble improvisation.</span>
+        </div>
+      </a>
+
+      <a class="tile w-5 s-2 r-square lift" href="work-ornithorhynchus-live-somewhere.html">
+        <div class="media ph" data-label="photo"></div>
+        <div class="caption">
+          <span class="num">03</span>
+          <span class="title">Ornithorhynchus live somewhere</span>
+          <span>2025</span>
+          <span class="what">Multimedia performance for bassoon, trombone, live electronics, ML algorithms and fixed visuals.</span>
+        </div>
+      </a>
+
+      <a class="tile w-5 s-7 r-land drop-1 tilt" href="work-il-corpo-poetico.html">
+        <div class="media ph" data-label="photo"></div>
+        <div class="caption">
+          <span class="num">04</span>
+          <span class="title">Il corpo poetico</span>
+          <span>2026</span>
+          <span class="what">Seven improvisational episodes for instruments, voices, bodies and live electronics.</span>
+        </div>
+      </a>
+
+    </div>
+
+  </main>
+
+  <!-- Nome gigante, tagliato dai bordi (decorativo) -->
+  <div class="wordmark" aria-hidden="true">Gianmarco Canato</div>
+
+  <!-- ===== FOOTER (identico in tutte le pagine) ===== -->
+  <footer class="site-footer">
+    <div class="contact">
+      <p class="label">Contact</p>
+      <p><a href="mailto:g.canato1@gmail.com">g.canato1@gmail.com</a></p>
+    </div>
+    <div class="links">
+      <a href="https://gianmarcocanato.bandcamp.com/">Bandcamp</a>
+      <a href="https://www.instagram.com/gianmarcocanato/">Instagram</a>
+    </div>
+    <p class="colophon">© 2026 Gianmarco Canato<br>Last updated: October 2026</p>
+  </footer>
+
 </body>
-
 </html>
