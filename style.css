@@ -186,7 +186,7 @@ figure { margin: 0; }
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   font-family: var(--serif);
-  font-size: 7.5rem;
+  font-size: min(7.5rem, 10vh);   /* su schermi bassi si rimpicciolisce, così non viene tagliata */
   line-height: .85;
   letter-spacing: -.02em;
 }
@@ -292,6 +292,7 @@ figcaption { margin-top: .6rem; font-family: var(--mono); font-size: .74rem; col
 .card:hover .num { color: var(--accent); }
 
 .home-lede { margin: 0; max-width: 26ch; }
+.left.side-by-side > .home-lede { align-self: start; }   /* in home la presentazione sta in alto, accanto all'inizio del nome */
 
 
 /* ---------- 8. WORKS: INDICE DEI LAVORI ----------

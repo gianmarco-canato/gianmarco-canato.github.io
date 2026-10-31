@@ -59,7 +59,7 @@ Nelle pagine dei lavori i commenti mostrano dove incollarlo.
 **Cambiare colori, font o grana**: tutto all'inizio di `style.css`, sezione 1.
 
 **Dopo aver cambiato `style.css`**: in tutte le pagine aumenta il numero in
-`style.css?v=3` (→ `?v=4`, ecc.). Così i browser scaricano subito la versione nuova.
+`style.css?v=4` (→ `?v=5`, ecc.). Così i browser scaricano subito la versione nuova.
 Con Cerca e sostituisci in tutti i file è un'operazione sola.
 
 ## Vedere il sito prima di pubblicarlo
