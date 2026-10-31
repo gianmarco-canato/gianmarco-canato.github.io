@@ -59,7 +59,7 @@
 /* ---------- 2. BASE ---------- */
 * { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; overflow-x: clip; }   /* il nastro a tutta larghezza non crea scorrimento laterale */
 
 body {
   margin: 0;
@@ -86,7 +86,6 @@ figure { margin: 0; }
   max-width: var(--max);
   margin: 0 auto;
   padding: 0 var(--gutter);
-  overflow-x: clip;   /* il nastro arriva ai bordi senza creare scorrimento laterale */
 }
 
 
@@ -134,9 +133,11 @@ figure { margin: 0; }
 
 /* ---------- 4. NASTRO BLU ----------
    Il testo è scritto TRE volte di seguito nell'HTML (tre <span> uguali):
-   così, mentre scorre, il nastro non resta mai vuoto. */
+   così, mentre scorre, il nastro non resta mai vuoto.
+   Il nastro esce dalla colonna centrale e occupa tutta la larghezza della finestra. */
 .tape {
-  margin: 0 calc(-1 * var(--gutter));
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
   padding: .7rem 0;
   overflow: hidden;
   white-space: nowrap;
