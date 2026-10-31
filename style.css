@@ -1,19 +1,29 @@
 /* =========================================================
    GIANMARCO CANATO — foglio di stile unico del sito
    ---------------------------------------------------------
+   Il sito usa un unico sistema, "due canali":
+   - in alto un NASTRO blu con parole che scorrono;
+   - sotto, DUE COLONNE: a sinistra una colonna che resta
+     ferma mentre scorri (cos'è la pagina), a destra il
+     contenuto che scorre.
+
    Indice:
    1. Variabili (colori, font, misure)  ← per cambiare l'aspetto
                                           generale basta toccare qui
    2. Base
    3. Header e navigazione
-   4. Tipografia editoriale
-   5. Galleria irregolare (home)
-   6. Liste: works, agenda, writings
-   7. Pagina progetto e media incorporati
-   8. Footer
-   9. Schermi piccoli (telefono)
-   10. Grana e nome gigante
-   11. Ritratto (pagina About)
+   4. Nastro blu
+   5. Due canali (le due colonne)
+   6. Elementi comuni (nome verticale, numeri, etichette, immagini)
+   7. Home: schede dei lavori
+   8. Works: indice dei lavori
+   9. Pagina di un lavoro
+   10. Agenda
+   11. Research
+   12. About
+   13. Footer
+   14. Grana
+   15. Schermi piccoli (telefono)
    ========================================================= */
 
 
@@ -33,7 +43,7 @@
   --ink:    #141414;   /* testo: off-black */
   --muted:  #6b6862;   /* testo secondario: grigio caldo */
   --rule:   #d5d2ca;   /* linee sottili, segnaposto */
-  --accent: #1b28e0;   /* blu elettrico: parole in evidenza, etichette, fasce al passaggio del mouse */
+  --accent: #1b28e0;   /* blu elettrico: nastro, numeri, parole in evidenza */
   --accent-text: #1b28e0; /* blu elettrico anche nei testi piccoli */
 
   --serif: "Instrument Serif", Georgia, serif;
@@ -42,8 +52,8 @@
 
   --gutter: clamp(16px, 4vw, 56px);  /* margine laterale */
   --max: 1440px;                     /* larghezza massima */
+  --grain: .09;                      /* intensità della grana (0 = spenta) */
 }
-
 
 
 /* ---------- 2. BASE ---------- */
@@ -67,12 +77,16 @@ img, video, iframe { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; transition: color .15s; }
 a:hover { color: var(--accent-text); }
 
+h1, h2, h3 { font-weight: 400; margin: 0; }
+figure { margin: 0; }
+
 ::selection { background: var(--accent); color: #fff; }
 
 .wrap {
   max-width: var(--max);
   margin: 0 auto;
   padding: 0 var(--gutter);
+  overflow-x: clip;   /* il nastro arriva ai bordi senza creare scorrimento laterale */
 }
 
 
@@ -118,133 +132,106 @@ a:hover { color: var(--accent-text); }
 @media (max-width: 1100px) { .side-note { display: none; } }
 
 
-/* ---------- 4. TIPOGRAFIA EDITORIALE ---------- */
-h1, h2, h3 { font-weight: 400; margin: 0; }
+/* ---------- 4. NASTRO BLU ----------
+   Il testo è scritto TRE volte di seguito nell'HTML (tre <span> uguali):
+   così, mentre scorre, il nastro non resta mai vuoto. */
+.tape {
+  margin: 0 calc(-1 * var(--gutter));
+  padding: .7rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--serif);
+  font-size: 2.3rem;
+  line-height: 1;
+}
+.tape span {
+  display: inline-block;
+  padding-right: 3rem;
+  animation: tape 30s linear infinite;
+}
+@keyframes tape { to { transform: translateX(-100%); } }
 
-/* Etichetta piccola in monospace (date, categorie, numeri) */
-.label {
-  font-family: var(--mono);
-  font-size: .76rem;
-  text-transform: uppercase;
-  letter-spacing: .06em;
-  color: var(--muted);
+
+/* ---------- 5. DUE CANALI ---------- */
+.twin {
+  display: grid;
+  grid-template-columns: 5fr 7fr;   /* sinistra più stretta, destra più larga */
+  gap: 3.5rem;
+  padding: 4rem 0 6rem;
 }
 
-/* Titolo grande in serif */
-.display {
+/* Colonna sinistra: resta ferma sotto l'header mentre la pagina scorre */
+.left {
+  position: sticky;
+  top: 5rem;
+  align-self: start;
+}
+
+/* Variante: nome verticale + blocco di testo affiancati */
+.left.side-by-side { display: flex; gap: 2rem; }
+.left.side-by-side > :last-child { align-self: end; }
+
+/* Colonna destra: blocchi uno sotto l'altro */
+.right { display: flex; flex-direction: column; gap: 4.5rem; }
+
+
+/* ---------- 6. ELEMENTI COMUNI ---------- */
+
+/* Parola verticale in grande (nome, "Works", "Agenda"…).
+   Solo per parole brevi: i titoli lunghi diventerebbero illeggibili. */
+.vname {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
   font-family: var(--serif);
-  font-size: clamp(2.8rem, 7.6vw, 8rem);
-  line-height: .9;
+  font-size: 7.5rem;
+  line-height: .85;
   letter-spacing: -.02em;
 }
+.vname em, .blue { color: var(--accent); }
 
-/* Righe sfalsate dentro un titolo grande */
-.display .line { display: block; }
-.display .in-1 { padding-left: 8.33%; }
-.display .in-2 { padding-left: 25%; }
-.display .in-3 { padding-left: 41.66%; }
-.display em { color: var(--accent); }
-
-/* Apertura di pagina: titolo e testo sfalsati sulla griglia */
-.intro {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 1.5rem;
-  padding: clamp(3rem, 10vw, 8rem) 0 clamp(3rem, 8vw, 6rem);
+/* Numero gigante in contorno blu (lavori, concetti) */
+.num {
+  font-family: var(--serif);
+  font-size: 7rem;
+  line-height: .8;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--accent);
 }
-.intro .label   { grid-column: 1 / -1; }
-.intro .display { grid-column: 1 / -1; }
-.intro .lede    { grid-column: 7 / 12; margin: 1.5rem 0 0; font-size: 1.15rem; max-width: 34em; }
 
-/* Intestazione di sezione con linea sopra */
-.section-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
-  padding: .9rem 0 2.5rem;
-  border-top: 1px solid var(--ink);
-}
-.section-title { font-family: var(--serif); font-size: clamp(1.8rem, 3.4vw, 2.8rem); }
-
-/* Testo lungo */
-.prose { max-width: 38em; font-size: 1.08rem; }
-.prose p { margin: 0 0 1.1em; }
-.prose a { border-bottom: 1px solid var(--ink); }
-.prose a:hover { background: var(--accent); color: #fff; border-bottom-color: var(--accent); }
-.prose h3 {
+/* Etichetta piccola in monospace (date, categorie) */
+.label, .mono {
   font-family: var(--mono);
-  font-size: .8rem;
+  font-size: .76rem;
+  letter-spacing: .05em;
   text-transform: uppercase;
-  letter-spacing: .06em;
   color: var(--muted);
-  margin: 2.5em 0 .8em;
 }
+.mono.plain { text-transform: none; }   /* stessa etichetta, senza maiuscole */
 
-/* Due colonne asimmetriche: etichetta a sinistra, contenuto a destra */
-.split {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 1.5rem;
-  padding: 1rem 0 5rem;
-  border-top: 1px solid var(--ink);
+/* Blocco con titoletto e linea: <div class="block"><h2 class="block-head">…</h2>…</div> */
+.block-head {
+  display: block;
+  padding-bottom: .8rem;
+  margin-bottom: 1.4rem;
+  border-bottom: 1px solid var(--ink);
+  font-family: var(--mono);
+  font-size: .76rem;
+  letter-spacing: .05em;
+  text-transform: uppercase;
 }
-.split > :first-child { grid-column: 1 / 4; }
-.split > :last-child  { grid-column: 5 / 12; }
+.block p { margin: 0 0 1em; max-width: 36em; font-size: 1.08rem; }
+.block p a { border-bottom: 1px solid var(--accent); }
 
-
-/* ---------- 5. GALLERIA IRREGOLARE ----------
-   La griglia ha 12 colonne. Ogni riquadro (.tile) si regola
-   combinando poche classi:
-
-   larghezza   w-3 … w-8    → quante colonne occupa
-   inizio      s-1 … s-8    → da quale colonna parte
-   spostamento drop-1, drop-2 (in giù), lift (in su)
-   formato     r-wide (16:9), r-land (4:3), r-tall (3:4), r-square
-   inclinato   tilt, tilt-r
-   ------------------------------------------------------ */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  column-gap: clamp(1rem, 2.5vw, 2.5rem);
-  row-gap: clamp(3rem, 7vw, 6.5rem);
-  align-items: start;
-  padding-bottom: 7rem;
-}
-
-.tile { display: block; grid-column-end: span 4; }
-
-.w-3 { grid-column-end: span 3; }
-.w-4 { grid-column-end: span 4; }
-.w-5 { grid-column-end: span 5; }
-.w-6 { grid-column-end: span 6; }
-.w-7 { grid-column-end: span 7; }
-.w-8 { grid-column-end: span 8; }
-
-.s-1 { grid-column-start: 1; }  .s-2 { grid-column-start: 2; }
-.s-3 { grid-column-start: 3; }  .s-4 { grid-column-start: 4; }
-.s-5 { grid-column-start: 5; }  .s-6 { grid-column-start: 6; }
-.s-7 { grid-column-start: 7; }  .s-8 { grid-column-start: 8; }
-
-.drop-1 { margin-top: 4rem; }
-.drop-2 { margin-top: 9rem; }
-.lift   { margin-top: -3rem; }
-
-.tilt   { transform: rotate(-1.1deg); }
-.tilt-r { transform: rotate(.9deg); }
-
-/* Contenitore dell'immagine */
-.media {
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 4 / 3;
-  background: var(--rule);
-}
-.r-wide   .media { aspect-ratio: 16 / 9; }
-.r-land   .media { aspect-ratio: 4 / 3; }
-.r-tall   .media { aspect-ratio: 3 / 4; }
-.r-square .media { aspect-ratio: 1 / 1; }
-
+/* Immagini.
+   Formato: r-wide (16:9), r-land (4:3), r-tall (3:4), r-square (1:1).
+   Le foto sono in bianco e nero e tornano a colori al passaggio del mouse. */
+.media { position: relative; overflow: hidden; aspect-ratio: 4 / 3; background: var(--rule); }
+.media.r-wide   { aspect-ratio: 16 / 9; }
+.media.r-land   { aspect-ratio: 4 / 3; }
+.media.r-tall   { aspect-ratio: 3 / 4; }
+.media.r-square { aspect-ratio: 1 / 1; }
 .media img {
   width: 100%;
   height: 100%;
@@ -252,10 +239,10 @@ h1, h2, h3 { font-weight: 400; margin: 0; }
   filter: grayscale(1) contrast(1.05);
   transition: filter .4s, transform .6s;
 }
-.tile:hover .media img { filter: none; transform: scale(1.02); }
+a:hover .media img, .media:hover img { filter: none; }
 
 /* Segnaposto a righe finché non c'è un'immagine vera.
-   Il testo viene dall'attributo data-label="..." */
+   Il testo viene dall'attributo data-label="…" */
 .ph {
   display: grid;
   place-items: center;
@@ -267,116 +254,170 @@ h1, h2, h3 { font-weight: 400; margin: 0; }
 }
 .ph::after {
   content: attr(data-label);
+  padding: .2rem .5rem;
+  background: var(--paper);
   font-family: var(--mono);
   font-size: .72rem;
-  text-transform: uppercase;
   letter-spacing: .08em;
-  color: var(--muted);
-  background: var(--paper);
-  padding: .2rem .5rem;
-}
-.tile:hover .ph { outline: 2px solid var(--accent); }
-
-/* Didascalia sotto l'immagine */
-.caption {
-  display: grid;
-  grid-template-columns: 2.2rem 1fr auto;
-  gap: .3rem .6rem;
-  margin-top: .8rem;
-  font-family: var(--mono);
-  font-size: .76rem;
+  text-transform: uppercase;
   color: var(--muted);
 }
-.caption .num { justify-self: start; align-self: start; color: #fff; background: var(--accent); padding: 0 .3rem; }
-.caption .title {
-  font-family: var(--sans);
-  font-size: 1rem;
-  color: var(--ink);
-  line-height: 1.3;
+
+figcaption { margin-top: .6rem; font-family: var(--mono); font-size: .74rem; color: var(--muted); }
+
+
+/* ---------- 7. HOME: SCHEDE DEI LAVORI ----------
+   Ogni lavoro è un <a class="card">. Si regola con:
+   larghezza    size-l (piena), size-m (circa tre quarti), size-s (poco più di metà)
+   rientro      push-1 (poco), push-2 (molto) verso destra
+   formato      r-wide, r-land, r-tall, r-square sul <div class="media"> */
+.card { position: relative; display: flex; flex-direction: column; gap: .5rem; }
+.card.size-l { width: 100%; }
+.card.size-m { width: 72%; }
+.card.size-s { width: 60%; }
+.card.push-1 { margin-left: 10%; }
+.card.push-2 { margin-left: 28%; }
+
+.card .num {
+  position: absolute;
+  top: -3.2rem;
+  left: -2.2rem;
+  z-index: 2;
+  font-size: 6rem;
 }
-.caption .what { grid-column: 2 / 3; }
-.tile:hover .caption .title { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .2em; }
+.card .card-line { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.card .card-title { font-family: var(--serif); font-size: 1.9rem; line-height: 1.05; }
+.card:hover .card-title { color: var(--accent); }
+.card:hover .num { color: var(--accent); }
+
+.home-lede { margin: 0; max-width: 26ch; }
 
 
-/* ---------- 6. LISTE: WORKS, AGENDA, WRITINGS ----------
-   Ogni riga è un <li> con quattro <span>: anno/data, titolo,
-   tipo/luogo, nota. Al passaggio del mouse la riga scivola. */
-.index { list-style: none; margin: 0 0 6rem; padding: 0; }
+/* ---------- 8. WORKS: INDICE DEI LAVORI ----------
+   Ogni lavoro è un <li> con dentro un <a class="work-row">. */
+.count { font-family: var(--serif); font-size: 6.5rem; line-height: .85; color: var(--accent); }
+.left-text { margin: 1rem 0 0; max-width: 28ch; }
 
-.index li { border-top: 1px solid var(--rule); }
-.index li:last-child { border-bottom: 1px solid var(--rule); }
-
-.index .row {
+.work-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
+.work-row {
   display: grid;
-  grid-template-columns: 8rem 1fr 14rem 7rem;
-  gap: 1rem;
-  align-items: baseline;
-  padding: 1rem 0;
-  transition: padding .25s, color .15s;
+  grid-template-columns: 5.5rem 9rem 1fr;
+  gap: 1.4rem;
+  align-items: start;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid var(--rule);
+  transition: padding .25s;
 }
-a.row:hover { padding-left: 1.2rem; background: var(--accent); color: #fff; }
-a.row:hover span { color: #fff; }
+.work-row .num { font-size: 4.2rem; }
+.work-row .work-text { display: flex; flex-direction: column; gap: .35rem; }
+.work-row .work-title { font-family: var(--serif); font-size: 2.1rem; line-height: 1; }
+.work-row:hover { padding-left: 1rem; }
+.work-row:hover .work-title, .work-row:hover .num { color: var(--accent); }
 
-.index .when, .index .where, .index .note {
-  font-family: var(--mono);
-  font-size: .78rem;
-  color: var(--muted);
+
+/* ---------- 9. PAGINA DI UN LAVORO ---------- */
+.work-head-title {
+  margin: .4rem 0 0;
+  font-family: var(--serif);
+  font-size: clamp(2.6rem, 4.6vw, 4.4rem);
+  line-height: .95;
+  letter-spacing: -.015em;
 }
-.index .note { text-align: right; }
-.index .what { font-size: 1.12rem; }
+.work-sub { margin: 1rem 0 0; max-width: 30ch; }
 
-/* Una riga "passata" (agenda) */
-.index .past { opacity: .55; }
-
-
-/* ---------- 7. PAGINA PROGETTO E MEDIA ---------- */
-.project-head {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 1.5rem;
-  padding: clamp(3rem, 8vw, 6rem) 0 3rem;
-}
-.project-head .display { grid-column: 1 / 10; }
-.project-head .meta    { grid-column: 10 / 13; align-self: end; }
-
-/* Scheda tecnica (anno, formato, organico…) */
-.meta { margin: 0; font-family: var(--mono); font-size: .78rem; }
-.meta div { display: flex; justify-content: space-between; gap: 1rem; padding: .45rem 0; border-top: 1px solid var(--rule); }
-.meta dt { color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
-.meta dd { margin: 0; text-align: right; }
-
-.project-body {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 3rem 1.5rem;
-  padding-bottom: 6rem;
-}
-.project-body .lead-media { grid-column: 1 / -1; }
-.project-body .prose      { grid-column: 4 / 11; }
-.project-body .side-media { grid-column: 7 / 13; }
-.project-body .side-media-l { grid-column: 1 / 7; }
+/* Scheda tecnica: <dl class="facts"><div><dt>…</dt><dd>…</dd></div>…</dl> */
+.facts { margin: 1.8rem 0 0; font-family: var(--mono); font-size: .78rem; }
+.facts div { display: flex; justify-content: space-between; gap: 1rem; padding: .5rem 0; border-top: 1px solid var(--rule); }
+.facts dt { color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+.facts dd { margin: 0; max-width: 22ch; text-align: right; }
 
 /* Video incorporato (YouTube, Vimeo): sempre 16:9 */
 .embed { position: relative; aspect-ratio: 16 / 9; background: var(--rule); }
 .embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
-/* Segnaposto a righe anche dentro i riquadri video */
-.embed.ph {
-  background:
-    repeating-linear-gradient(-45deg, transparent 0 11px, var(--rule) 11px 12px),
-    var(--paper);
-}
-
 /* Audio incorporato (Bandcamp, SoundCloud): altezza fissa */
+.embed-audio { height: 120px; }
 .embed-audio iframe { width: 100%; height: 120px; border: 0; }
 
-figure { margin: 0; }
-figcaption { margin-top: .6rem; font-family: var(--mono); font-size: .74rem; color: var(--muted); }
+/* Coppia di foto sfalsate */
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; align-items: start; }
+.pair > :last-child { margin-top: 5rem; }
 
-.back { display: inline-block; margin: 0 0 3rem; font-family: var(--mono); font-size: .8rem; }
+/* Link al lavoro successivo */
+.next-work {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--ink);
+}
+.next-work .next-title { font-family: var(--serif); font-size: 2.2rem; line-height: 1; }
+.next-work:hover .next-title { color: var(--accent); }
 
 
-/* ---------- 8. FOOTER ---------- */
+/* ---------- 10. AGENDA ---------- */
+.next-date .day  { font-family: var(--serif); font-size: 6.5rem; line-height: .85; letter-spacing: -.02em; color: var(--accent); }
+.next-date .year { font-family: var(--serif); font-size: 2rem; line-height: 1; color: var(--accent); }
+.next-date .what { margin: 1rem 0 .4rem; max-width: 14ch; font-family: var(--serif); font-size: 1.7rem; line-height: 1.1; }
+
+/* Elenco date: una riga = un <li> con data, titolo, luogo */
+.events { list-style: none; margin: 0; padding: 0; }
+.events li {
+  display: grid;
+  grid-template-columns: 9rem 1fr auto;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.events .event-title { font-family: var(--serif); font-size: 1.6rem; line-height: 1.1; }
+.events li:hover .event-title { color: var(--accent); }
+.events.past li { opacity: .55; }
+
+
+/* ---------- 11. RESEARCH ---------- */
+.question p { margin: .8rem 0 0; max-width: 18ch; font-family: var(--serif); font-size: 1.9rem; line-height: 1.12; }
+.question em { color: var(--accent); }
+
+.concept { display: grid; grid-template-columns: 6rem 1fr; gap: 1.2rem; padding: 1.2rem 0; border-bottom: 1px solid var(--rule); }
+.concept .num { font-size: 5rem; }
+.concept h3 { margin: 0 0 .5rem; font-family: var(--serif); font-size: 2rem; line-height: 1.05; }
+.concept p { margin: 0; font-size: 1.02rem; }
+
+/* Pubblicazioni e talk: una riga = un <li> */
+.pubs { list-style: none; margin: 0; padding: 0; }
+.pubs li { border-bottom: 1px solid var(--rule); }
+.pubs .pub-row { display: grid; grid-template-columns: 5rem 1fr auto; gap: 1rem; align-items: baseline; padding: 1rem 0; }
+.pubs .pub-title { font-family: var(--serif); font-size: 1.5rem; line-height: 1.1; }
+.pubs a.pub-row:hover .pub-title { color: var(--accent); }
+
+
+/* ---------- 12. ABOUT ---------- */
+/* Ritratto in bicromia: foto in bianco e nero fusa con il blu.
+   Le ombre diventano blu, le luci restano chiare; al passaggio
+   del mouse la foto torna ai colori originali. */
+.portrait { width: 82%; transform: rotate(-.8deg); }
+.portrait-frame { aspect-ratio: 3 / 4; overflow: hidden; background: var(--accent); }
+.portrait-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.15) brightness(1.05);
+  mix-blend-mode: screen;
+  transition: filter .4s;
+}
+.portrait:hover .portrait-frame img { filter: none; mix-blend-mode: normal; }
+
+.about-name { margin: 1.6rem 0 .8rem; font-family: var(--serif); font-size: clamp(2.8rem, 4.8vw, 4.6rem); line-height: .92; letter-spacing: -.015em; }
+
+/* Formazione: anno a sinistra, descrizione a destra */
+.timeline p { display: grid; grid-template-columns: 7rem 1fr; gap: 1rem; padding: .7rem 0; margin: 0; max-width: none; border-bottom: 1px solid var(--rule); }
+
+.big-mail { font-family: var(--serif); font-size: 2.2rem; line-height: 1.1; }
+
+
+/* ---------- 13. FOOTER ---------- */
 .site-footer {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -386,48 +427,17 @@ figcaption { margin-top: .6rem; font-family: var(--mono); font-size: .74rem; col
   font-family: var(--mono);
   font-size: .78rem;
 }
-.site-footer .contact { grid-column: 1 / 6; }
-.site-footer .links   { grid-column: 7 / 10; display: flex; flex-direction: column; gap: .2rem; }
+.site-footer .contact  { grid-column: 1 / 6; }
+.site-footer .links    { grid-column: 7 / 10; display: flex; flex-direction: column; gap: .2rem; }
 .site-footer .colophon { grid-column: 10 / 13; color: var(--muted); text-align: right; }
 .site-footer p { margin: 0 0 .5rem; }
 .site-footer a { border-bottom: 1px solid transparent; }
 .site-footer a:hover { border-bottom-color: var(--accent-text); }
 
 
-/* ---------- 9. SCHERMI PICCOLI ---------- */
-@media (max-width: 760px) {
-  body { font-size: 16px; }
-  .display .in-1 { padding-left: 6%; }
-  .display .in-2 { padding-left: 14%; }
-  .display .in-3 { padding-left: 22%; }
-  .site-header { position: static; }
-
-  .intro .display, .intro .lede,
-  .split > :first-child, .split > :last-child,
-  .project-head .display, .project-head .meta,
-  .project-body .prose, .project-body .side-media, .project-body .side-media-l,
-  .site-footer .contact, .site-footer .links, .site-footer .colophon {
-    grid-column: 1 / -1;
-    text-align: left;
-  }
-
-  /* Galleria: una colonna, ma con rientri alternati per non perdere l'irregolarità */
-  .gallery .tile { grid-column: 1 / -1; margin-top: 0; }
-  .gallery .tile:nth-child(odd)  { margin-right: 12%; }
-  .gallery .tile:nth-child(even) { margin-left: 18%; }
-
-  .index .row { grid-template-columns: 1fr auto; gap: .2rem 1rem; }
-  .index .what  { grid-column: 1 / -1; grid-row: 2; }
-  .index .where { grid-column: 1 / -1; grid-row: 3; }
-}
-
-
-/* ---------- 10. GRANA E NOME GIGANTE ---------- */
-
-/* Grana: rumore generato da un filtro SVG, steso sopra tutta la pagina.
-   --grain regola l'intensità (0 = spenta, .12 = molto evidente). */
-:root { --grain: .09; }
-
+/* ---------- 14. GRANA ----------
+   Rumore generato da un filtro SVG, steso sopra tutta la pagina.
+   L'intensità si regola con --grain nelle variabili (sezione 1). */
 body::before {
   content: "";
   position: fixed;
@@ -449,81 +459,45 @@ body::before {
   100% { transform: translate(0, 0); }
 }
 
-/* Chi ha attivato "riduci movimento" nel sistema vede la grana ferma */
+/* Chi ha attivato "riduci movimento" nel sistema vede grana e nastro fermi */
 @media (prefers-reduced-motion: reduce) {
-  body::before { animation: none; }
+  body::before, .tape span { animation: none; }
 }
 
-/* Nome gigante in contorno, tagliato a destra e in basso */
-.wordmark {
-  height: .6em;
-  overflow: hidden;
-  margin-top: 4rem;
-  padding-left: var(--gutter);
-  font-family: var(--serif);
-  font-size: 19vw;
-  line-height: .8;
-  letter-spacing: -.03em;
-  white-space: nowrap;
-  color: transparent;
-  -webkit-text-stroke: 1px var(--muted);
-  transition: -webkit-text-stroke-color .3s;
-}
-.wordmark:hover { color: var(--accent); -webkit-text-stroke-color: var(--accent); }
 
-
-/* ---------- 11. RITRATTO (pagina About) ----------
-   Nome a sinistra, foto verticale a destra, leggermente inclinata.
-   La riga vuota finale (1fr) assorbe l'altezza della foto,
-   così il testo a sinistra resta compatto sotto il nome. */
-.intro-portrait { grid-template-rows: auto auto auto 1fr; }
-.intro-portrait .label   { grid-column: 1 / 9; grid-row: 1; }
-.intro-portrait .display { grid-column: 1 / 9; grid-row: 2; }
-.intro-portrait .lede    { grid-column: 1 / 7; grid-row: 3; align-self: start; }
-
-.portrait {
-  grid-column: 9 / 13;
-  grid-row: 1 / 5;
-  align-self: start;
-  margin: 0;
-  transform: rotate(.8deg);
-}
-
-.portrait-frame {
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
-  background: var(--accent);   /* il blu che "colora" la foto */
-}
-
-/* Bicromia: foto in bianco e nero fusa con il fondo blu.
-   Le ombre diventano blu, le luci restano chiare. */
-.portrait-frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(1) contrast(1.15) brightness(1.05);
-  mix-blend-mode: screen;
-  transition: filter .4s;
-}
-.portrait:hover .portrait-frame img { filter: none; mix-blend-mode: normal; }
-
-/* Segnaposto a righe finché non c'è la foto */
-.portrait-frame.ph {
-  background:
-    repeating-linear-gradient(-45deg, transparent 0 11px, var(--rule) 11px 12px),
-    var(--paper);
-}
-
+/* ---------- 15. SCHERMI PICCOLI ---------- */
 @media (max-width: 760px) {
-  .intro-portrait { grid-template-rows: none; }
-  .intro-portrait .label,
-  .intro-portrait .display,
-  .intro-portrait .lede { grid-column: 1 / -1; grid-row: auto; }
-  .portrait {
-    grid-column: 1 / -1;
-    grid-row: auto;
-    width: 72%;
-    margin-left: auto;
-    transform: rotate(.8deg);
-  }
+  body { font-size: 16px; }
+  .site-header { position: static; }
+
+  .tape { font-size: 1.5rem; }
+
+  /* Le due colonne diventano una: la sinistra va in cima e non resta ferma */
+  .twin { grid-template-columns: 1fr; gap: 4rem; padding-top: 2.5rem; }
+  .left { position: static; }
+  .left.side-by-side { flex-direction: column; gap: 1rem; }
+  .left.side-by-side > :last-child { align-self: start; }
+
+  /* Il testo verticale torna orizzontale */
+  .vname { writing-mode: horizontal-tb; transform: none; font-size: 3.6rem; }
+  .num { font-size: 4.5rem; }
+
+  /* Home: schede a tutta larghezza, numeri dentro il margine */
+  .card.size-l, .card.size-m, .card.size-s { width: 100%; }
+  .card.push-1, .card.push-2 { margin-left: 0; }
+  .card .num { top: -2.4rem; left: 0; font-size: 4rem; }
+  .right { gap: 4rem; }
+
+  .work-row { grid-template-columns: 3.4rem 1fr; }
+  .work-row .media { display: none; }
+  .work-row .num { font-size: 3rem; }
+
+  .events li { grid-template-columns: 1fr; gap: .2rem; }
+  .pubs .pub-row { grid-template-columns: 1fr auto; }
+  .pubs .pub-title { grid-column: 1 / -1; grid-row: 2; }
+  .concept { grid-template-columns: 1fr; }
+  .portrait { width: 72%; }
+  .timeline p { grid-template-columns: 1fr; gap: .2rem; }
+
+  .site-footer .contact, .site-footer .links, .site-footer .colophon { grid-column: 1 / -1; text-align: left; }
 }

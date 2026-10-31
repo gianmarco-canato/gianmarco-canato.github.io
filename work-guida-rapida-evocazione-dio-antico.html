@@ -4,16 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Guida rapida all'evocazione di un dio antico — Gianmarco Canato</title>
-  <meta name="description" content="Short description of the project for search engines.">
+  <meta name="description" content="Guida rapida all'evocazione di un dio antico (2023): Graphic score for open ensemble improvisation.">
 
   <!-- Font (uguali in tutte le pagine) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <!-- Il numero dopo ?v= va aumentato ogni volta che cambi style.css:
+       così i browser scaricano subito la versione nuova invece di quella in memoria. -->
+  <link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
-
 
   <!-- ===== HEADER (identico in tutte le pagine: cambia solo aria-current) ===== -->
   <header class="site-header">
@@ -29,48 +30,71 @@
 
   <main class="wrap">
 
-    <section class="project-head">
-      <h1 class="display">Guida rapida all'evocazione di un dio antico</h1>
-      <dl class="meta">
-        <div><dt>Year</dt><dd>20XX</dd></div>
-        <div><dt>Format</dt><dd>Format</dd></div>
-        <div><dt>Means</dt><dd>Instruments, media</dd></div>
-        <div><dt>With</dt><dd>Collaborators</dd></div>
-      </dl>
-    </section>
+    <!-- NASTRO BLU. Qui scorrono i mezzi del lavoro. Il testo è ripetuto tre volte: cambialo in tutti e tre gli <span>. -->
+    <div class="tape" aria-hidden="true"><span>Graphic score · Open ensemble · Improvisation · </span><span>Graphic score · Open ensemble · Improvisation · </span><span>Graphic score · Open ensemble · Improvisation · </span></div>
 
-    <section class="project-body">
+    <section class="twin">
 
-      <!-- MEDIA PRINCIPALE: video 16:9.
-           Per incorporare un video sostituisci il <div class="embed ph"> con:
-           YouTube → <div class="embed"><iframe src="https://www.youtube-nocookie.com/embed/CODICE" title="titolo" allowfullscreen></iframe></div>
-           Vimeo   → <div class="embed"><iframe src="https://player.vimeo.com/video/NUMERO" title="titolo" allowfullscreen></iframe></div> -->
-      <figure class="lead-media">
-        <div class="embed ph" data-label="video"></div>
-        <figcaption>Caption — place, date, photo/video credit.</figcaption>
-      </figure>
-
-      <div class="prose">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+      <!-- SINISTRA (ferma): numero, titolo, descrizione breve e scheda tecnica -->
+      <div class="left">
+        <div class="num">03</div>
+        <h1 class="work-head-title">Guida rapida all'evocazione di un dio antico</h1>
+        <p class="work-sub mono plain">Graphic score for open ensemble improvisation</p>
+        <dl class="facts">
+          <div><dt>Year</dt><dd>2023</dd></div>
+          <div><dt>Format</dt><dd>Graphic score</dd></div>
+          <div><dt>Means</dt><dd>Open ensemble</dd></div>
+          <div><dt>Duration</dt><dd>—</dd></div>
+          <div><dt>With</dt><dd>Collaborators</dd></div>
+        </dl>
       </div>
 
-      <!-- MEDIA SECONDARIO: audio.
-           Bandcamp   → <div class="embed-audio"><iframe src="https://bandcamp.com/EmbeddedPlayer/album=NUMERO/size=small/" title="titolo"></iframe></div>
-           SoundCloud → <div class="embed-audio"><iframe src="https://w.soundcloud.com/player/?url=LINK-DEL-BRANO" title="titolo"></iframe></div>
-           Il codice esatto lo trovi sul sito di Bandcamp/SoundCloud alla voce "Share" → "Embed". -->
-      <figure class="side-media">
-        <div class="embed-audio ph" style="height:120px" data-label="audio"></div>
-        <figcaption>Audio — title, date.</figcaption>
-      </figure>
+      <!-- DESTRA (scorre): video, testo, foto, audio, date -->
+      <div class="right">
 
+        <!-- VIDEO: sostituisci <div class="embed ph" …></div> con
+             YouTube → <div class="embed"><iframe src="https://www.youtube-nocookie.com/embed/CODICE" title="titolo" allowfullscreen></iframe></div>
+             Vimeo   → <div class="embed"><iframe src="https://player.vimeo.com/video/NUMERO" title="titolo" allowfullscreen></iframe></div> -->
+        <figure>
+          <div class="embed ph" data-label="video"></div>
+          <figcaption>Caption — place, date, photo/video credit.</figcaption>
+        </figure>
+
+        <div class="block">
+          <h2 class="block-head">About the work</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        </div>
+
+        <!-- FOTO: due immagini sfalsate. Sostituisci ogni <div class="media … ph" …></div> con
+             <div class="media r-tall"><img src="img/nome-file.jpg" alt="descrizione"></div> -->
+        <div class="pair">
+          <div class="media r-tall ph" data-label="photo"></div>
+          <div class="media r-land ph" data-label="photo"></div>
+        </div>
+
+        <!-- AUDIO: sostituisci <div class="embed-audio ph" …></div> con
+             Bandcamp   → <div class="embed-audio"><iframe src="https://bandcamp.com/EmbeddedPlayer/album=NUMERO/size=small/" title="titolo"></iframe></div>
+             SoundCloud → <div class="embed-audio"><iframe src="https://w.soundcloud.com/player/?url=LINK-DEL-BRANO" title="titolo"></iframe></div>
+             Il codice esatto lo trovi alla voce "Share" → "Embed". -->
+        <div class="block">
+          <h2 class="block-head">Listen</h2>
+          <div class="embed-audio ph" data-label="audio"></div>
+        </div>
+
+        <div class="block">
+          <h2 class="block-head">Performances</h2>
+          <p>Venue, city, date<br>Venue, city, date</p>
+        </div>
+
+        <!-- LAVORO SUCCESSIVO (nell'ordine dal più recente al più vecchio) -->
+        <a class="next-work" href="work-dentro-le-stanze.html">
+          <span><span class="mono">Next work · 04 · 2021</span><br><span class="next-title">Dentro le stanze</span></span>
+          <span class="next-title">→</span>
+        </a>
+
+      </div>
     </section>
-
-    <a class="back" href="works.html">← All works</a>
-
   </main>
-
-  <!-- Nome gigante, tagliato dai bordi (decorativo) -->
-  <div class="wordmark" aria-hidden="true">Gianmarco Canato</div>
 
   <!-- ===== FOOTER (identico in tutte le pagine) ===== -->
   <footer class="site-footer">

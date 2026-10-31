@@ -10,7 +10,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <!-- Il numero dopo ?v= va aumentato ogni volta che cambi style.css:
+       così i browser scaricano subito la versione nuova invece di quella in memoria. -->
+  <link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
 
@@ -28,46 +30,54 @@
 
   <main class="wrap">
 
-    <section class="intro">
-      <p class="label">Index</p>
-      <h1 class="display">Works</h1>
-      <p class="lede">Performances, performance systems and collaborative projects. Most of them are improvised, some are partly composed; all of them change from one performance to the next.</p>
+    <!-- NASTRO BLU. Il testo è ripetuto tre volte: cambialo in tutti e tre gli <span>. -->
+    <div class="tape" aria-hidden="true"><span>Il corpo poetico · Ornithorhynchus live somewhere · Guida rapida all'evocazione di un dio antico · Dentro le stanze · </span><span>Il corpo poetico · Ornithorhynchus live somewhere · Guida rapida all'evocazione di un dio antico · Dentro le stanze · </span><span>Il corpo poetico · Ornithorhynchus live somewhere · Guida rapida all'evocazione di un dio antico · Dentro le stanze · </span></div>
+
+    <section class="twin">
+
+      <div class="left side-by-side">
+        <h1 class="vname">Works</h1>
+        <div>
+          <div class="count">4</div>
+          <span class="mono">works · 2021–2026</span>
+          <p class="left-text">Performances, performance systems and collaborative projects. Most of them are improvised, some are partly composed; all of them change from one performance to the next.</p>
+        </div>
+      </div>
+
+      <!-- ELENCO LAVORI: una riga = un <li>. Ordine: dal più recente.
+           Quando aggiungi un lavoro aggiorna anche il numero grande a sinistra
+           e il nastro in alto. -->
+      <div class="right">
+        <ul class="work-list">
+
+          <li><a class="work-row" href="work-il-corpo-poetico.html">
+            <span class="num">01</span>
+            <span class="media r-land ph" data-label="img"></span>
+            <span class="work-text"><span class="mono">2026</span><span class="work-title">Il corpo poetico</span><span class="mono plain">Seven improvisational episodes for instruments, voices, bodies and live electronics</span></span>
+          </a></li>
+
+          <li><a class="work-row" href="work-ornithorhynchus-live-somewhere.html">
+            <span class="num">02</span>
+            <span class="media r-land ph" data-label="img"></span>
+            <span class="work-text"><span class="mono">2025</span><span class="work-title">Ornithorhynchus live somewhere</span><span class="mono plain">Multimedia performance for bassoon, trombone, live electronics, ML algorithms and fixed visuals</span></span>
+          </a></li>
+
+          <li><a class="work-row" href="work-guida-rapida-evocazione-dio-antico.html">
+            <span class="num">03</span>
+            <span class="media r-land ph" data-label="img"></span>
+            <span class="work-text"><span class="mono">2023</span><span class="work-title">Guida rapida all'evocazione di un dio antico</span><span class="mono plain">Graphic score for open ensemble improvisation</span></span>
+          </a></li>
+
+          <li><a class="work-row" href="work-dentro-le-stanze.html">
+            <span class="num">04</span>
+            <span class="media r-land ph" data-label="img"></span>
+            <span class="work-text"><span class="mono">2021</span><span class="work-title">Dentro le stanze</span><span class="mono plain">Multimodal performance for bassoon, fixed media, live electronics, written short stories</span></span>
+          </a></li>
+        </ul>
+      </div>
+
     </section>
-
-    <!-- ===== ELENCO LAVORI =====
-         Una riga = un <li>. Per aggiungere un lavoro copia un <li> intero.
-         Ordine consigliato: dal più recente al più vecchio. -->
-    <ul class="index">
-      <li><a class="row" href="work-il-corpo-poetico.html">
-        <span class="when">2026</span>
-        <span class="what">Il corpo poetico</span>
-        <span class="where">Format</span>
-        <span class="note">media</span>
-      </a></li>
-      <li><a class="row" href="work-ornithorhynchus-live-somewhere.html">
-        <span class="when">2025</span>
-        <span class="what">Ornithorhynchus live somewhere</span>
-        <span class="where">Format</span>
-        <span class="note">media</span>
-      </a></li>
-      <li><a class="row" href="work-guida-rapida-evocazione-dio-antico.html">
-        <span class="when">2023</span>
-        <span class="what">Guida rapida all'evocazione di un dio antico</span>
-        <span class="where">Format</span>
-        <span class="note">media</span>
-      </a></li>
-      <li><a class="row" href="work-dentro-le-stanze.html">
-        <span class="when">2021</span>
-        <span class="what">Dentro le stanze</span>
-        <span class="where">Format</span>
-        <span class="note">media</span>
-      </a></li>
-    </ul>
-
   </main>
-
-  <!-- Nome gigante, tagliato dai bordi (decorativo) -->
-  <div class="wordmark" aria-hidden="true">Gianmarco Canato</div>
 
   <!-- ===== FOOTER (identico in tutte le pagine) ===== -->
   <footer class="site-footer">

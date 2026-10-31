@@ -10,7 +10,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <!-- Il numero dopo ?v= va aumentato ogni volta che cambi style.css:
+       così i browser scaricano subito la versione nuova invece di quella in memoria. -->
+  <link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
 
@@ -28,54 +30,55 @@
 
   <main class="wrap">
 
-    <section class="intro">
-      <p class="label">Doctoral research · artistic research</p>
-      <h1 class="display">Improvisation through the lens of experimental music theatre</h1>
-      <p class="lede">My doctoral research asks how approaching my own improvisational practice through concepts from experimental music theatre shapes the way I act through the means each performance makes available, depending on its dramaturgical framework.</p>
-    </section>
+    <!-- NASTRO BLU. Il testo è ripetuto tre volte: cambialo in tutti e tre gli <span>. -->
+    <div class="tape" aria-hidden="true"><span>Doctoral research · Artistic research · Conservatories of Alessandria and Como · HKB Bern · </span><span>Doctoral research · Artistic research · Conservatories of Alessandria and Como · HKB Bern · </span><span>Doctoral research · Artistic research · Conservatories of Alessandria and Como · HKB Bern · </span></div>
 
-    <section class="split">
-      <p class="label">The project</p>
-      <div class="prose">
-        <p>I start from two means of action, bassoon and live electronics, to which text, images and movement are added from one performance to another. Each dramaturgical framework makes these means available in a different way. The research follows what happens to my decisions and actions as an improviser in each case.</p>
-        <p>The work is practice-based and draws on rehearsal and performance diaries, video documentation and a set of case studies, each with a different dramaturgical framework.</p>
-        <p>Doctoral researcher at Conservatorio [name], [city]. Associate researcher at the Bern University of the Arts (HKB).</p>
+    <section class="twin">
+
+      <!-- SINISTRA (ferma): la domanda di ricerca -->
+      <div class="left side-by-side">
+        <h1 class="vname">Research</h1>
+        <div class="question">
+          <span class="mono">Research question</span>
+          <p>How does approaching my improvisational practice through <em>experimental music theatre</em> shape the way I act through the means each performance makes available?</p>
+        </div>
+      </div>
+
+      <div class="right">
+
+        <div class="block">
+          <h2 class="block-head">The project</h2>
+          <p>I start from two means of action, bassoon and live electronics, to which text, images and movement are added from one performance to another. Each dramaturgical framework makes these means available in a different way. The research follows what happens to my decisions and actions as an improviser in each case.</p>
+          <p>The work is practice-based and draws on rehearsal and performance diaries, video documentation and a set of case studies, each with a different dramaturgical framework.</p>
+          <p>Doctoral researcher at the Conservatories of Alessandria and Como. Associate researcher at the Bern University of the Arts (HKB).</p>
+        </div>
+
+        <!-- CONCETTI: per aggiungerne uno copia un <div class="concept">…</div> e cambia il numero -->
+        <div class="block">
+          <h2 class="block-head">Concepts</h2>
+          <div class="concept">
+            <span class="num">01</span>
+            <div><h3>Visual discontinuity</h3><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div>
+          </div>
+          <div class="concept">
+            <span class="num">02</span>
+            <div><h3>Live electronics as a disembodied character</h3><p>Electronics systems built on coherent timbral corpora that act as a presence of their own on stage.</p></div>
+          </div>
+        </div>
+
+        <!-- PUBBLICAZIONI E INTERVENTI: una riga = un <li>.
+             Con un link usa <a class="pub-row" href="…">, senza link usa <div class="pub-row">. -->
+        <div class="block">
+          <h2 class="block-head">Writings &amp; talks</h2>
+          <ul class="pubs">
+            <li><a class="pub-row" href="https://example.com"><span class="mono">20XX</span><span class="pub-title">Title of the paper</span><span class="mono">paper ↗</span></a></li>
+            <li><div class="pub-row"><span class="mono">20XX</span><span class="pub-title">Title of the talk</span><span class="mono">talk</span></div></li>
+          </ul>
+        </div>
+
       </div>
     </section>
-
-    <section class="split">
-      <p class="label">Concepts</p>
-      <div class="prose">
-        <p><strong>Focal points</strong>: techniques for configuring the relations between sound, movement and the space around the performer, combining musical improvisation exercises, Viola Spolin's Point of Concentration and a practice of focussed noticing.</p>
-        <p><strong>Live electronics as a disembodied character</strong>: electronics systems built on coherent timbral corpora that act as a presence of their own on stage.</p>
-      </div>
-    </section>
-
-    <div class="section-head">
-      <h2 class="section-title">Writings &amp; talks</h2>
-    </div>
-
-    <!-- ===== PUBBLICAZIONI E INTERVENTI =====
-         Una riga = un <li>. Se non c'è un link, usa <div class="row"> invece di <a class="row" href="…">. -->
-    <ul class="index">
-      <li><a class="row" href="https://example.com">
-        <span class="when">20XX</span>
-        <span class="what">Title of the paper</span>
-        <span class="where">Conference / journal</span>
-        <span class="note">paper ↗</span>
-      </a></li>
-      <li><div class="row">
-        <span class="when">20XX</span>
-        <span class="what">Title of the talk</span>
-        <span class="where">Conference, city</span>
-        <span class="note">talk</span>
-      </div></li>
-    </ul>
-
   </main>
-
-  <!-- Nome gigante, tagliato dai bordi (decorativo) -->
-  <div class="wordmark" aria-hidden="true">Gianmarco Canato</div>
 
   <!-- ===== FOOTER (identico in tutte le pagine) ===== -->
   <footer class="site-footer">

@@ -10,7 +10,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <!-- Il numero dopo ?v= va aumentato ogni volta che cambi style.css:
+       così i browser scaricano subito la versione nuova invece di quella in memoria. -->
+  <link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
 
@@ -28,42 +30,45 @@
 
   <main class="wrap">
 
-    <section class="intro">
-      <p class="label">Performances · talks · workshops</p>
-      <h1 class="display">Agenda</h1>
+    <!-- NASTRO BLU. Qui va la prossima data. Il testo è ripetuto tre volte: cambialo in tutti e tre gli <span>. -->
+    <div class="tape" aria-hidden="true"><span>Next: DD.MM.YYYY · Event title · Venue, city · concert · </span><span>Next: DD.MM.YYYY · Event title · Venue, city · concert · </span><span>Next: DD.MM.YYYY · Event title · Venue, city · concert · </span></div>
+
+    <section class="twin">
+
+      <!-- SINISTRA (ferma): la PROSSIMA data in grande.
+           Quando una data passa, aggiorna questo blocco e il nastro con la data successiva. -->
+      <div class="left side-by-side">
+        <h1 class="vname">Agenda</h1>
+        <div class="next-date">
+          <span class="mono">Next</span>
+          <div class="day">DD.MM</div>
+          <div class="year">YYYY</div>
+          <p class="what">Event title</p>
+          <span class="mono">Venue, city · concert</span>
+        </div>
+      </div>
+
+      <!-- DESTRA (scorre): una riga = un <li>. Le date nuove vanno in cima.
+           Quando una data è passata, spostala sotto "Past". -->
+      <div class="right">
+
+        <div class="block">
+          <h2 class="block-head">Upcoming</h2>
+          <ul class="events">
+            <li><span class="mono">DD.MM.YYYY</span><span class="event-title">Event title</span><span class="mono">Venue, city</span></li>
+          </ul>
+        </div>
+
+        <div class="block">
+          <h2 class="block-head">Past</h2>
+          <ul class="events past">
+            <li><span class="mono">01.10–08.12.2026</span><span class="event-title">Doctoral research stay</span><span class="mono">HKB, Bern</span></li>
+          </ul>
+        </div>
+
+      </div>
     </section>
-
-    <!-- ===== DATE =====
-         Una riga = un <li>. Le date nuove vanno in cima.
-         Quando una data è passata, spostala sotto "Past". -->
-    <div class="section-head">
-      <h2 class="section-title">Upcoming</h2>
-    </div>
-    <ul class="index">
-      <li><div class="row">
-        <span class="when">DD.MM.YYYY</span>
-        <span class="what">Event title</span>
-        <span class="where">Venue, city</span>
-        <span class="note">concert</span>
-      </div></li>
-    </ul>
-
-    <div class="section-head">
-      <h2 class="section-title">Past</h2>
-    </div>
-    <ul class="index">
-      <li><div class="row past">
-        <span class="when">01.10–08.12.2026</span>
-        <span class="what">Doctoral research stay</span>
-        <span class="where">HKB, Bern</span>
-        <span class="note">research</span>
-      </div></li>
-    </ul>
-
   </main>
-
-  <!-- Nome gigante, tagliato dai bordi (decorativo) -->
-  <div class="wordmark" aria-hidden="true">Gianmarco Canato</div>
 
   <!-- ===== FOOTER (identico in tutte le pagine) ===== -->
   <footer class="site-footer">

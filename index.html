@@ -10,7 +10,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <!-- Il numero dopo ?v= va aumentato ogni volta che cambi style.css:
+       così i browser scaricano subito la versione nuova invece di quella in memoria. -->
+  <link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
 
@@ -28,79 +30,57 @@
 
   <main class="wrap">
 
-    <!-- ===== APERTURA ===== -->
-    <section class="intro">
-      <p class="label">Selected works &amp; research</p>
-      <!-- Ogni <span class="line"> è una riga; in-1, in-2, in-3 la spostano a destra -->
-      <h1 class="display">
-        <span class="line">Bassoon and live electronics</span>
-        <span class="line in-1">between classical music,</span>
-        <span class="line in-2">free improvisation <em>and</em></span>
-        <span class="line in-3">experimental</span>
-        <span class="line">music theatre.</span>
-      </h1>
-      <p class="lede">I am a bassoonist, electronic musician and improviser based in Varese. My practice and doctoral research look at how an improvising musician acts through the means a performance makes available: instrument, electronics, movement, text and image.</p>
-    </section>
+    <!-- NASTRO BLU. Il testo è ripetuto tre volte: cambialo in tutti e tre gli <span>. -->
+    <div class="tape" aria-hidden="true"><span>Bassoon and live electronics · between classical music · free improvisation · and experimental music theatre · </span><span>Bassoon and live electronics · between classical music · free improvisation · and experimental music theatre · </span><span>Bassoon and live electronics · between classical music · free improvisation · and experimental music theatre · </span></div>
 
-    <!-- ===== GALLERIA =====
-         Per aggiungere un lavoro: copia un blocco <a class="tile">…</a>,
-         cambia link, immagine e didascalia, e gioca con le classi
-         (w-, s-, drop-, tilt). Per l'immagine sostituisci
-         <div class="media ph" data-label="…"></div> con
-         <div class="media"><img src="img/nome-file.jpg" alt="descrizione"></div> -->
-    <div class="section-head">
-      <h2 class="section-title">Works</h2>
-      <a class="label" href="works.html">Full index →</a>
-    </div>
+    <section class="twin">
 
-    <div class="gallery">
+      <!-- SINISTRA (ferma): nome verticale e presentazione -->
+      <div class="left side-by-side">
+        <h1 class="vname">Gianmarco <em>Canato</em></h1>
+        <p class="home-lede">I am a bassoonist, electronic musician and improviser based in Varese. My practice and doctoral research look at how an improvising musician acts through the means a performance makes available: instrument, electronics, movement, text and image.</p>
+      </div>
 
-      <a class="tile w-7 s-1 r-wide" href="work-dentro-le-stanze.html">
-        <div class="media ph" data-label="photo / video still"></div>
-        <div class="caption">
+      <!-- DESTRA (scorre): i lavori, dal più recente.
+           Per aggiungere un lavoro copia un blocco <a class="card">…</a>.
+           Classi: size-l / size-m / size-s (larghezza), push-1 / push-2 (rientro),
+           r-wide / r-land / r-tall / r-square (formato dell'immagine).
+           Per l'immagine sostituisci <div class="media … ph" data-label="…"></div> con
+           <div class="media r-land"><img src="img/nome-file.jpg" alt="descrizione"></div> -->
+      <div class="right">
+
+        <a class="card size-l" href="work-il-corpo-poetico.html">
           <span class="num">01</span>
-          <span class="title">Dentro le stanze</span>
-          <span>2021</span>
-          <span class="what">Multimodal performance for bassoon, fixed media, live electronics, written short stories.</span>
-        </div>
-      </a>
+          <div class="media r-land ph" data-label="photo / video still"></div>
+          <div class="card-line"><span class="card-title">Il corpo poetico</span><span class="mono">2026</span></div>
+          <span class="mono plain">Seven improvisational episodes for instruments, voices, bodies and live electronics</span>
+        </a>
 
-      <a class="tile w-4 s-9 r-tall drop-2 tilt-r" href="work-guida-rapida-evocazione-dio-antico.html">
-        <div class="media ph" data-label="photo"></div>
-        <div class="caption">
+        <a class="card size-s push-2" href="work-ornithorhynchus-live-somewhere.html">
           <span class="num">02</span>
-          <span class="title">Guida rapida all'evocazione di un dio antico</span>
-          <span>2023</span>
-          <span class="what">Graphic score for open ensemble improvisation.</span>
-        </div>
-      </a>
+          <div class="media r-tall ph" data-label="photo / video still"></div>
+          <div class="card-line"><span class="card-title">Ornithorhynchus live somewhere</span><span class="mono">2025</span></div>
+          <span class="mono plain">Multimedia performance for bassoon, trombone, live electronics, ML algorithms and fixed visuals</span>
+        </a>
 
-      <a class="tile w-5 s-2 r-square lift" href="work-ornithorhynchus-live-somewhere.html">
-        <div class="media ph" data-label="photo"></div>
-        <div class="caption">
+        <a class="card size-l" href="work-guida-rapida-evocazione-dio-antico.html">
           <span class="num">03</span>
-          <span class="title">Ornithorhynchus live somewhere</span>
-          <span>2025</span>
-          <span class="what">Multimedia performance for bassoon, trombone, live electronics, ML algorithms and fixed visuals.</span>
-        </div>
-      </a>
+          <div class="media r-wide ph" data-label="photo / video still"></div>
+          <div class="card-line"><span class="card-title">Guida rapida all'evocazione di un dio antico</span><span class="mono">2023</span></div>
+          <span class="mono plain">Graphic score for open ensemble improvisation</span>
+        </a>
 
-      <a class="tile w-5 s-7 r-land drop-1 tilt" href="work-il-corpo-poetico.html">
-        <div class="media ph" data-label="photo"></div>
-        <div class="caption">
+        <a class="card size-s push-1" href="work-dentro-le-stanze.html">
           <span class="num">04</span>
-          <span class="title">Il corpo poetico</span>
-          <span>2026</span>
-          <span class="what">Seven improvisational episodes for instruments, voices, bodies and live electronics.</span>
-        </div>
-      </a>
+          <div class="media r-square ph" data-label="photo / video still"></div>
+          <div class="card-line"><span class="card-title">Dentro le stanze</span><span class="mono">2021</span></div>
+          <span class="mono plain">Multimodal performance for bassoon, fixed media, live electronics, written short stories</span>
+        </a>
 
-    </div>
+      </div>
 
+    </section>
   </main>
-
-  <!-- Nome gigante, tagliato dai bordi (decorativo) -->
-  <div class="wordmark" aria-hidden="true">Gianmarco Canato</div>
 
   <!-- ===== FOOTER (identico in tutte le pagine) ===== -->
   <footer class="site-footer">

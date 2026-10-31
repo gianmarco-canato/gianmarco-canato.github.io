@@ -4,13 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About — Gianmarco Canato</title>
-  <meta name="description" content="Biography of Gianmarco Canato, bassoonist, electronic musician and improviser based in Milan.">
+  <meta name="description" content="Biography of Gianmarco Canato, bassoonist, electronic musician and improviser based in Varese.">
 
   <!-- Font (uguali in tutte le pagine) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <!-- Il numero dopo ?v= va aumentato ogni volta che cambi style.css:
+       così i browser scaricano subito la versione nuova invece di quella in memoria. -->
+  <link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
 
@@ -28,63 +30,56 @@
 
   <main class="wrap">
 
-    <section class="intro intro-portrait">
-      <p class="label">About</p>
-      <h1 class="display">
-        <span class="line">Gianmarco</span>
-        <span class="line in-1">Canato</span>
-      </h1>
-      <p class="lede">Bassoonist, electronic musician and improviser, based in Varese.</p>
+    <!-- NASTRO BLU. Il testo è ripetuto tre volte: cambialo in tutti e tre gli <span>. -->
+    <div class="tape" aria-hidden="true"><span>Bassoonist · Electronic musician · Improviser · Varese — Bern · </span><span>Bassoonist · Electronic musician · Improviser · Varese — Bern · </span><span>Bassoonist · Electronic musician · Improviser · Varese — Bern · </span></div>
 
-      <!-- RITRATTO
-           Per mettere la foto: salvala come img/portrait.jpg (verticale, 1200–1600 px
-           sul lato lungo), poi sostituisci la riga <div class="portrait-frame ph" …></div>
-           con:
+    <section class="twin">
+
+      <!-- SINISTRA (ferma): ritratto e nome.
+           RITRATTO: salva la foto come img/portrait.jpg (verticale, 1200–1600 px sul lato lungo),
+           poi sostituisci la riga <div class="portrait-frame ph" …></div> con:
            <div class="portrait-frame"><img src="img/portrait.jpg" alt="Portrait of Gianmarco Canato"></div>
            La foto appare in bicromia blu; al passaggio del mouse torna ai colori originali. -->
-      <figure class="portrait">
-        <div class="portrait-frame ph" data-label="portrait"></div>
-        <figcaption>Photo: Name Surname</figcaption>
-      </figure>
-    </section>
+      <div class="left">
+        <figure class="portrait">
+          <div class="portrait-frame ph" data-label="portrait"></div>
+          <figcaption>Photo: Name Surname</figcaption>
+        </figure>
+        <h1 class="about-name">Gianmarco <em class="blue">Canato</em></h1>
+        <span class="mono">Bassoonist, electronic musician and improviser, based in Varese</span>
+      </div>
 
-    <section class="split">
-      <p class="label">Biography</p>
-      <div class="prose">
-        <p>Gianmarco Canato trained as a classical bassoonist and orchestral musician before moving into electronic music. Today he works with bassoon and live electronics across classical music, free improvisation and experimental music theatre.</p>
-        <p>His practice sits between the fully improvised and the fully composed. It is close to the Roman tradition of improvisation associated with Giancarlo Schiaffini, Musica Elettronica Viva and Alvin Curran, where freedom can coexist with structures and earlier decisions.</p>
-        <p>He is a doctoral researcher at Conservatories of Alessandria and Como, and an associate researcher at the Bern University of the Arts (HKB). He teaches History of Electroacoustic Music at the Civica Scuola di Musica Claudio Abbado in Milan.</p>
+      <div class="right">
+
+        <div class="block">
+          <h2 class="block-head">Biography</h2>
+          <p>Gianmarco Canato trained as a classical bassoonist and orchestral musician before moving into electronic music. Today he works with bassoon and live electronics across classical music, free improvisation and experimental music theatre.</p>
+          <p>His practice sits between the fully improvised and the fully composed. It is close to the Roman tradition of improvisation associated with Giancarlo Schiaffini, Musica Elettronica Viva and Alvin Curran, where freedom can coexist with structures and earlier decisions.</p>
+          <p>He is a doctoral researcher at Conservatories of Alessandria and Como, and an associate researcher at the Bern University of the Arts (HKB). He teaches History of Electroacoustic Music at the Civica Scuola di Musica Claudio Abbado in Milan.</p>
+        </div>
+
+        <div class="block" id="teaching">
+          <h2 class="block-head">Teaching</h2>
+          <p>History of Electroacoustic Music<br>Civica Scuola di Musica Claudio Abbado, Milan</p>
+        </div>
+
+        <!-- FORMAZIONE: una riga = un <p> con l'anno a sinistra -->
+        <div class="block timeline">
+          <h2 class="block-head">Education</h2>
+          <p><span class="mono">in progress</span><span>Doctorate — Conservatorio di Alessandria / Conservatorio di Como</span></p>
+          <p><span class="mono">2024</span><span>Master in Electronic Music — Conservatorio di Como</span></p>
+          <p><span class="mono">2015–2021</span><span>Bassoon — Conservatorio Guido Cantelli, Novara (2015) · Bern University of the Arts, HKB (2018, 2021)</span></p>
+        </div>
+
+        <div class="block">
+          <h2 class="block-head">Contact</h2>
+          <p><a class="big-mail" href="mailto:g.canato1@gmail.com">g.canato1@gmail.com</a></p>
+          <span class="mono plain">Press photos and CV on request.</span>
+        </div>
+
       </div>
     </section>
-
-    <section class="split" id="teaching">
-      <p class="label">Teaching</p>
-      <div class="prose">
-        <p>History of Electroacoustic Music<br>Civica Scuola di Musica Claudio Abbado, Milan</p>
-      </div>
-    </section>
-
-    <section class="split">
-      <p class="label">Education</p>
-      <div class="prose">
-        <p>Doctorate (in progress) — Conservatorio di Alessandria / Conservatorio di Como</p>
-        <p>Master in Electronic Music, 2024 — Conservatorio di Como</p>
-        <p>Bassoon — Conservatorio Guido Cantelli, Novara, 2015 · Bern University of the Arts (HKB), 2018 and 2021</p>
-      </div>
-    </section>
-
-    <section class="split">
-      <p class="label">Contact</p>
-      <div class="prose">
-        <p><a href="mailto:g.canato1@gmail.com">g.canato1@gmail.com</a></p>
-        <p>Press photos and CV on request.</p>
-      </div>
-    </section>
-
   </main>
-
-  <!-- Nome gigante, tagliato dai bordi (decorativo) -->
-  <div class="wordmark" aria-hidden="true">Gianmarco Canato</div>
 
   <!-- ===== FOOTER (identico in tutte le pagine) ===== -->
   <footer class="site-footer">
